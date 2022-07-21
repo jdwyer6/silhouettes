@@ -7,6 +7,7 @@ import background from '../assets/images/sunset/background.png'
 // import OptionCard from '../options/OptionCard';
 // import { selectGender } from '../options/optionSlice';
 import { useState, useRef } from 'react';
+import Thumbnails from '../components/Thumbnails';
 
 
 const CreatePage = () => {
@@ -62,7 +63,7 @@ const CreatePage = () => {
                     <div>
                         <h1>Sunset</h1>
                         <p>A high-quality, custom canvas featuring you and your pup silhouetted by a golden sunset </p>
-                        <Button>Customize</Button>
+                        <Button>Add to cart</Button>
                     </div>
                     <form>
                         <div className="my-3">
@@ -90,42 +91,9 @@ const CreatePage = () => {
                                 <option value="Running">Running</option>
                             </select>
                         </div>
-                        <Row className="options-row">
-                            {/* {HUMANIMAGELAYERS.filter((val) => {
-                                if(gender === 'male')
-                                    return val
-                            })} */}
-                            
-                            {HUMANIMAGELAYERS.map((img) => {
-                                return(
-                                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className="option-container d-flex align-items-center human-thumbnail">
-                                        <img className='option-container__image' src={img.image}></img>
-                                    </div>
-                                )
-
-                            })}
-                            
-
-
-                            {/* {HUMANIMAGELAYERS.filter((val) => {
-                                if(searchTerm == ''){
-                                    return val
-                                }else if(searchTerm == 'all-genders'){
-                                    return val
-                                }else if(val.gender == searchTerm.toLowerCase()){
-                                    return val
-                                }
-                                }).map((val, key) => {
-                                return(
-                                    <div onClick={(e) => handleClick(val.id)} key={key} className='option-container'>
-                                        <img className='option-container__image' src={val.image}></img>
-                                    </div>
-                                ) 
-                            })} */}
-                        </Row>
-
-
                         
+                        <Thumbnails dogThumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail'/>
+
 
                         <div className="my-3 dog-container">
                             <label htmlFor='dog'>Dog Breed:</label>
@@ -140,21 +108,13 @@ const CreatePage = () => {
                             </select>
                         </div>
 
-                        <Row className='option-row'>
-                            {DOGIMAGELAYERS.map((img) => {
-                                return(
-                                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className="option-container d-flex align-items-center dog-thumbnail">
-                                        <img className='option-container__image' src={img.image}></img>
-                                    </div>
-                                )
-                            })}
-                        </Row>
-
+                        <Thumbnails dogThumbnails={DOGIMAGELAYERS} handleClick={handleClick} classIdentifier='dog-thumbnail'/>
                     </form>
                     <section>
                     </section>
                 </Col>
             </Row>
+            
 
         </Container>
      );
