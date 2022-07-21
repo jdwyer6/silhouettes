@@ -4,10 +4,10 @@ import { DOGIMAGELAYERS } from '../shared/DOGIMAGELAYERS';
 import defaultImage from '../assets/images/sunset/default-image.png';
 import blankCanvas from '../assets/images/background/blankCanvas.jpg';
 import background from '../assets/images/sunset/background.png'
-// import OptionCard from '../options/OptionCard';
 // import { selectGender } from '../options/optionSlice';
 import { useState, useRef } from 'react';
 import Thumbnails from '../components/Thumbnails';
+import FilterSelection from '../components/FilterSelection';
 
 
 const CreatePage = () => {
@@ -69,9 +69,9 @@ const CreatePage = () => {
                         <div className="my-3">
                             <label htmlFor='gender'>Gender:</label>
                             <select onChange={(e) => {setHuman({gender: e.target.value})}} name="gender" id="gender" className="form-select" aria-label="gender" defaultValue={'male'}>
-                                <option className='opt' value="male">Male</option>
-                                <option className='opt' value="female">Female</option>
-                                <option className='opt' value="all-genders">All</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="all-genders">All</option>
                             </select>
                         </div>
                         <div className="my-3">
@@ -91,8 +91,8 @@ const CreatePage = () => {
                                 <option value="Running">Running</option>
                             </select>
                         </div>
-                        
-                        <Thumbnails dogThumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail'/>
+                        <FilterSelection label='Dropdown Component Test' subject='gender' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
+                        <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail'/>
 
 
                         <div className="my-3 dog-container">
@@ -108,7 +108,7 @@ const CreatePage = () => {
                             </select>
                         </div>
 
-                        <Thumbnails dogThumbnails={DOGIMAGELAYERS} handleClick={handleClick} classIdentifier='dog-thumbnail'/>
+                        <Thumbnails thumbnails={DOGIMAGELAYERS} handleClick={handleClick} classIdentifier='dog-thumbnail'/>
                     </form>
                     <section>
                     </section>
