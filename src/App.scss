@@ -1,0 +1,93 @@
+@import url("https://use.typekit.net/iyz4vwz.css");
+
+  $color-black: #000000;
+  $color-gray-dark: #261F23;
+  $color-gray-light: #AAAAAA;
+  $color-yellow: #FFAA00;
+  $color-white: #FFFFFF;
+
+
+*{
+  font-family: proxima-nova, sans-serif;
+}
+
+.header{
+  background-color: $color-white;
+  height: 2.5rem;
+  box-shadow: 0px 0px 40px $color-gray-light;
+
+  &__siteTitle{
+    font-size: 2rem;
+    width: 200px;
+    // margin-top: .5rem;
+  }
+}
+
+// Home Page
+.hero-img-container{
+    margin-top: 6rem;
+    border-radius: 20px;
+    width: 80vw;
+    overflow: hidden;
+    position: relative;
+
+    &__img{
+        width: 100%;
+        height: 400px;
+        // object-fit: cover;
+        background-image: linear-gradient(to right, transparent, rgba($color-white, .7), rgba($color-white, .8)), url('assets/images/background/hero.jpg');
+        background-size: cover;
+        background-position: center;
+  }
+
+    &__text{
+        width: 20rem;
+        position: absolute;
+        right: 8rem;
+        top: 10rem;
+    }
+
+}
+
+  //Create Page
+.create-section-1{
+    margin-top: 5rem;
+}
+
+.preview-container{
+    width: 500px;
+    height: 500px;
+    position: relative;
+
+        &__blankCanvas{
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        }
+
+        &__previewImage{
+        width: 95%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        }
+}
+
+.option-container{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10px;
+    margin: .2rem;
+    border: 1px solid $color-gray-light;
+
+    &__image{
+        object-fit: contain;
+        padding: .5rem;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+    }
+}
