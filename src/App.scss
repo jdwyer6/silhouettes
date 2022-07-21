@@ -83,12 +83,22 @@
         left: 50%;
         }
 
-        &__previewImage{
+        &__previewBackground{
         width: 95%;
         position: absolute;
         top: 50%;
         transform: translate(-50%, -50%);
         left: 50%;
+        }
+
+        &__previewHuman{
+            width: 100%;
+            position: absolute;
+        }
+
+        &__previewDog{
+            width: 100%;
+            position: absolute;
         }
 }
 
@@ -109,11 +119,11 @@
     }
 
     &__image{
-        object-fit: contain;
-        // padding: .5rem;
-        width: 90%;
-        height: 90%;
-        border-radius: inherit;
+        object-fit: cover;
+        padding: 0 2rem 1rem 0;
+        width: 150%;
+        height: 150%;
+        // border-radius: inherit;
     }
 }
 

@@ -1,7 +1,9 @@
 import { Container, Col, Row, Button } from 'reactstrap';
 import { HUMANIMAGELAYERS } from '../shared/HUMANIMAGELAYERS';
+import { DOGIMAGELAYERS } from '../shared/DOGIMAGELAYERS';
 import defaultImage from '../assets/images/sunset/default-image.png';
 import blankCanvas from '../assets/images/background/blankCanvas.jpg';
+import background from '../assets/images/sunset/background.png'
 // import OptionCard from '../options/OptionCard';
 // import { selectGender } from '../options/optionSlice';
 import { useState, useRef } from 'react';
@@ -10,23 +12,33 @@ import { useState, useRef } from 'react';
 const CreatePage = () => {
     // const [gender, setGender] = useState("");
     // const [age, setAge] = useState("");
-    const [dog, setDog] = useState("");
     // const [bodyLanguage, setBodyLanguage] = useState("");
     // console.log(gender + age + dog + bodyLanguage)
 
     // const genderRef = useRef();
     // function updateGender(e){const gender = genderRef.current.value}
 
-    const [human, setHuman] = useState({
-        gender: '',
-        age: '',
-        bodyLanguage: ''
-    })
-    console.log(`Gender: ${human.gender} - Age: ${human.age} - Body Language: ${human.bodyLanguage}`);
+    // const [human, setHuman] = useState({
+    //     gender: '',
+    //     age: '',
+    //     bodyLanguage: ''
+    // })
+    // console.log(`Gender: ${human.gender} - Age: ${human.age} - Body Language: ${human.bodyLanguage}`);
 
-    let humanSelection = 0;
+    let [humanSelection, setHuman] = useState(0)
+    let [dogSelection, setDog] = useState(0)
+
     const handleClick = (e) =>{
-        humanSelection = e.currentTarget.id;
+        if(e.currentTarget.classList.contains('human-thumbnail')){
+            setHuman(e.currentTarget.id)
+            console.log("Human Selection: " + humanSelection);
+        }else if(e.currentTarget.classList.contains('dog-thumbnail')){
+            setDog(e.currentTarget.id)
+            console.log('Dog Selection: ' + dogSelection)
+        }else{
+            console.log('Problem with selection')
+        }
+
         const options = [...document.getElementsByClassName('option-container')]
         options.forEach(option => {
             if(option.classList.contains('selected')){
@@ -42,7 +54,9 @@ const CreatePage = () => {
             <Row className='create-section-1'>
                 <Col md='6' className='preview-container'>
                     <img src={blankCanvas} alt='blank-canvas' className='preview-container__blankCanvas'></img>
-                    <img src={defaultImage} alt="default-image" className='preview-container__previewImage'></img>
+                    <img src={background} alt="default-image" className='preview-container__previewBackground'></img>
+                    <img src={HUMANIMAGELAYERS[humanSelection].image} alt='human-image' className='preview-container__previewHuman'></img>
+                    <img src={DOGIMAGELAYERS[dogSelection].image} alt='dog-image' className='preview-container__previewDog'></img>
                 </Col>
                 <Col md='4' className='ms-5'>
                     <div>
@@ -84,7 +98,7 @@ const CreatePage = () => {
                             
                             {HUMANIMAGELAYERS.map((img) => {
                                 return(
-                                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className="option-container d-flex align-items-center">
+                                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className="option-container d-flex align-items-center human-thumbnail">
                                         <img className='option-container__image' src={img.image}></img>
                                     </div>
                                 )
@@ -125,6 +139,16 @@ const CreatePage = () => {
                                 <option value="Husky">Husky</option>
                             </select>
                         </div>
+
+                        <Row className='option-row'>
+                            {DOGIMAGELAYERS.map((img) => {
+                                return(
+                                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className="option-container d-flex align-items-center dog-thumbnail">
+                                        <img className='option-container__image' src={img.image}></img>
+                                    </div>
+                                )
+                            })}
+                        </Row>
 
                     </form>
                     <section>
