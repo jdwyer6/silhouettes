@@ -11,6 +11,22 @@
   font-family: proxima-nova, sans-serif;
 }
 
+.form-select{
+    &:focus{
+    outline: solid $color-gray-light;
+    }
+}
+
+
+.navLink{
+    color: $color-gray-dark;
+    text-decoration: none;
+
+    &:hover{
+        color: $color-gray-light;
+    }
+}
+
 .header{
   background-color: $color-white;
   height: 2.5rem;
@@ -76,18 +92,37 @@
         }
 }
 
+.options-row{
+    padding: 0 12px;
+}
+
 .option-container{
     width: 5rem;
     height: 5rem;
     border-radius: 10px;
     margin: .2rem;
     border: 1px solid $color-gray-light;
+    cursor: pointer;
+
+    &:hover{
+        border: 3px solid $color-gray-light;
+    }
 
     &__image{
         object-fit: contain;
-        padding: .5rem;
-        width: inherit;
-        height: inherit;
+        // padding: .5rem;
+        width: 90%;
+        height: 90%;
         border-radius: inherit;
+    }
+}
+
+
+
+.selected{
+    border: 3px solid $color-yellow;
+
+    &:hover{
+        border: 3px solid $color-yellow;
     }
 }

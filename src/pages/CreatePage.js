@@ -24,7 +24,17 @@ const CreatePage = () => {
     })
     console.log(`Gender: ${human.gender} - Age: ${human.age} - Body Language: ${human.bodyLanguage}`);
 
-
+    let humanSelection = 0;
+    const handleClick = (e) =>{
+        humanSelection = e.currentTarget.id;
+        const options = [...document.getElementsByClassName('option-container')]
+        options.forEach(option => {
+            if(option.classList.contains('selected')){
+                option.classList.remove('selected')
+            }
+        });
+        e.currentTarget.classList.add('selected')
+      }
 
 
     return ( 
@@ -44,9 +54,9 @@ const CreatePage = () => {
                         <div className="my-3">
                             <label htmlFor='gender'>Gender:</label>
                             <select onChange={(e) => {setHuman({gender: e.target.value})}} name="gender" id="gender" className="form-select" aria-label="gender" defaultValue={'male'}>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="all-genders">All</option>
+                                <option className='opt' value="male">Male</option>
+                                <option className='opt' value="female">Female</option>
+                                <option className='opt' value="all-genders">All</option>
                             </select>
                         </div>
                         <div className="my-3">
@@ -66,18 +76,22 @@ const CreatePage = () => {
                                 <option value="Running">Running</option>
                             </select>
                         </div>
-                        <Row>
+                        <Row className="options-row">
                             {/* {HUMANIMAGELAYERS.filter((val) => {
                                 if(gender === 'male')
                                     return val
                             })} */}
+                            
                             {HUMANIMAGELAYERS.map((img) => {
                                 return(
-                                    <div className="option-container">
+                                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className="option-container d-flex align-items-center">
                                         <img className='option-container__image' src={img.image}></img>
                                     </div>
                                 )
+
                             })}
+                            
+
 
                             {/* {HUMANIMAGELAYERS.filter((val) => {
                                 if(searchTerm == ''){
