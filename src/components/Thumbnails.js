@@ -1,9 +1,6 @@
 import { Row } from 'reactstrap';
 
-const Thumbnails = (props) => {
-    const thumbnails = props.thumbnails;
-    const handleClick = props.handleClick;
-    const classIdentifier = props.classIdentifier;
+const Thumbnails = ({thumbnails, handleClick, classIdentifier}) => {
 
     return ( 
         <Row className='m-0'>

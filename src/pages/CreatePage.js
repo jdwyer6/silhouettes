@@ -50,6 +50,7 @@ const CreatePage = () => {
       }
 
 
+
     return ( 
         <Container>
             <Row className='create-section-1'>
@@ -59,65 +60,40 @@ const CreatePage = () => {
                     <img src={HUMANIMAGELAYERS[humanSelection].image} alt='human-image' className='preview-container__previewHuman'></img>
                     <img src={DOGIMAGELAYERS[dogSelection].image} alt='dog-image' className='preview-container__previewDog'></img>
                 </Col>
-                <Col md='4' className='ms-5'>
+                <Col md='6' className='ms-5'>
                     <div>
                         <h1>Sunset</h1>
                         <p>A high-quality, custom canvas featuring you and your pup silhouetted by a golden sunset </p>
-                        <Button>Add to cart</Button>
                     </div>
                     <form>
-                        <div className="my-3">
-                            <label htmlFor='gender'>Gender:</label>
-                            <select onChange={(e) => {setHuman({gender: e.target.value})}} name="gender" id="gender" className="form-select" aria-label="gender" defaultValue={'male'}>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="all-genders">All</option>
-                            </select>
-                        </div>
-                        <div className="my-3">
-                            <label htmlFor='age'>Age:</label>
-                            <select onChange={(e) => {setHuman({age: e.target.value})}} name="age" id="age" className="form-select" aria-label="age" defaultValue={"adult"}>
-                                <option value="child">Child</option>
-                                <option value="teen">Teen</option>
-                                <option value="adult">Adult</option>
-                                <option value="elderly">Elderly</option>
-                            </select>
-                        </div>
-                        <div className="my-3">
+                        {/* Choose Human */}
+                        <FilterSelection label='Gender' subject='gender' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Age' subject='age' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Body Language' subject='bodyLanguage' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
+                        <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail'/>
+
+                        {/* Choose Dog */}
+                        <FilterSelection label='Dog Breed' subject='breed' setHuman={setDog} images={DOGIMAGELAYERS}/>
+                        <Thumbnails thumbnails={DOGIMAGELAYERS} handleClick={handleClick} classIdentifier='dog-thumbnail'/>
+
+                        <Button className='my-3'>Add to cart</Button>
+
+                    </form>
+                </Col>
+            </Row>
+            
+        </Container>
+     );
+}
+ 
+export default CreatePage;
+
+
+                        {/* <div className="my-3">
                             <label htmlFor='body-language'>Body Language:</label>
                             <select onChange={(e) => {setHuman({bodyLanguage: e.target.value})}} name="body-language" id="body-language" className="form-select" aria-label="body-language" defaultValue={"adult"}>
                                 <option value="Standing">Standing</option>
                                 <option value="Seated">Seated</option>
                                 <option value="Running">Running</option>
                             </select>
-                        </div>
-                        <FilterSelection label='Dropdown Component Test' subject='gender' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
-                        <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail'/>
-
-
-                        <div className="my-3 dog-container">
-                            <label htmlFor='dog'>Dog Breed:</label>
-                            <select onChange={(e) => {setDog(e.target.value)}} name="dog" id="dog" className="form-select" aria-label="Dog dog">
-                                <option value="German Shepard">German Shepard</option>
-                                <option value="Australian Shepard">Australian Shepard</option>
-                                <option value="Chihuahua">Chihuahua</option>
-                                <option value="Schnauzer">Schnauzer</option>
-                                <option value="Poodle">Poodle</option>
-                                <option value="Golden Retriever">Golden Retriever</option>
-                                <option value="Husky">Husky</option>
-                            </select>
-                        </div>
-
-                        <Thumbnails thumbnails={DOGIMAGELAYERS} handleClick={handleClick} classIdentifier='dog-thumbnail'/>
-                    </form>
-                    <section>
-                    </section>
-                </Col>
-            </Row>
-            
-
-        </Container>
-     );
-}
- 
-export default CreatePage;
+                        </div> */}
