@@ -70,6 +70,10 @@
     margin-top: 5rem;
 }
 
+.preview-col{
+    width: 500px;
+}
+
 .preview-container{
     width: 500px;
     height: 500px;
@@ -111,7 +115,7 @@
     cursor: pointer;
 
     &:hover{
-        border: 3px solid $color-gray-light;
+        background-color: $color-yellow;
     }
 
     &__image{
@@ -120,6 +124,15 @@
         width: 150%;
         height: 150%;
         // border-radius: inherit;
+    }
+}
+
+.bg-thumbnail{
+    overflow: hidden;
+    padding: 0;
+
+    &:hover{
+        filter: brightness(.9);
     }
 }
 
@@ -132,3 +145,17 @@
         border: 3px solid $color-yellow;
     }
 }
+
+//Components
+.button-wide-transparentbg{
+    background-color: transparent;
+    color: $color-gray-dark;
+    width: 10rem;
+
+    &:hover{
+        background-color: $color-yellow;
+        border: 1px solid transparent;
+        color: black;
+    }
+}
+

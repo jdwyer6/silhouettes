@@ -6,7 +6,7 @@ const Thumbnails = ({thumbnails, handleClick, classIdentifier}) => {
         <Row className='m-0'>
             {thumbnails.map((img) => {
                 return(
-                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className={`option-container d-flex align-items-center ${classIdentifier}`}>
+                    <div key={img.id} id={img.id} onClick={(e) => handleClick(e)} className={`d-flex align-items-center option-container ${classIdentifier}`}>
                         <img className='option-container__image' src={img.image}></img>
                     </div>
                 )
