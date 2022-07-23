@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const FilterSelection = (props) => {
     const subject = props.subject;
-    const setHuman = props.setHuman;
+    const setFilter = props.setFilter;
     const images = props.images;
     const label = props.label;
     const uniqueValues =['All',...new Set(images.map((item) => item[subject]))]; 
@@ -18,7 +18,7 @@ const FilterSelection = (props) => {
     return ( 
         <Row className="my-3 m-0">
             <label className='px-1' htmlFor={subject}>{label}:</label>
-            <select onChange={(e) => {setHuman({gender: e.target.value})}} name={subject} id={subject} className="form-select" aria-label={subject}>
+            <select onChange={(e) => setFilter(e.target.value)} name={subject} id={subject} className="form-select" aria-label={subject}>
                 {options}
             </select>
 
@@ -29,3 +29,18 @@ const FilterSelection = (props) => {
 }
  
 export default FilterSelection;
+
+
+{/* <select onChange={(e) => setFilter({[subject]: e.target.value})} name={subject} id={subject} className="form-select" aria-label={subject}>
+{options}
+</select> */}
+
+
+
+
+
+
+
+
+
+

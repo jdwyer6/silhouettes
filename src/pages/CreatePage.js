@@ -12,24 +12,23 @@ import FilterSelection from '../components/FilterSelection';
 
 
 const CreatePage = () => {
-    // const [gender, setGender] = useState("");
-    // const [age, setAge] = useState("");
-    // const [bodyLanguage, setBodyLanguage] = useState("");
-    // console.log(gender + age + dog + bodyLanguage)
-
+    const [gender, setGender] = useState("all");
+    const [age, setAge] = useState("all");
+    const [bodyLanguage, setBodyLanguage] = useState("all");
+    console.log(`Gender: ${gender} \n Age: ${age} \n BodyLanguage: ${bodyLanguage}`)
     // const genderRef = useRef();
     // function updateGender(e){const gender = genderRef.current.value}
 
-    // const [human, setHuman] = useState({
+    // const [filterHuman, setFilterHuman] = useState({
     //     gender: '',
     //     age: '',
     //     bodyLanguage: ''
     // })
-    // console.log(`Gender: ${human.gender} - Age: ${human.age} - Body Language: ${human.bodyLanguage}`);
+    // console.log(`Gender: ${filterHuman.gender} - Age: ${filterHuman.age} - Body Language: ${filterHuman.bodyLanguage}`);
 
-    let [humanSelection, setHuman] = useState(0)
-    let [dogSelection, setDog] = useState(0)
-    let [BGSelection, setBG] = useState(0)
+    const [humanSelection, setHuman] = useState(0)
+    const [dogSelection, setDog] = useState(0)
+    const [BGSelection, setBG] = useState(0)
 
     const handleClick = (e) =>{
         if(e.currentTarget.classList.contains('human-thumbnail')){
@@ -79,9 +78,9 @@ const CreatePage = () => {
                     </div>
                     <form>
                         {/* Choose Human */}
-                        <FilterSelection label='Gender' subject='gender' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
-                        <FilterSelection label='Age' subject='age' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
-                        <FilterSelection label='Body Language' subject='bodyLanguage' setHuman={setHuman} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Gender' subject='gender' setFilter={setGender} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Age' subject='age' setFilter={setAge} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Body Language' subject='bodyLanguage' setFilter={setBodyLanguage} images={HUMANIMAGELAYERS}/>
                         <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail'/>
 
                         {/* Choose Dog */}
