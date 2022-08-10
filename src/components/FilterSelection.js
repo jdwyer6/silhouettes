@@ -31,9 +31,6 @@ const FilterSelection = (props) => {
 export default FilterSelection;
 
 
-{/* <select onChange={(e) => setFilter({[subject]: e.target.value})} name={subject} id={subject} className="form-select" aria-label={subject}>
-{options}
-</select> */}
 
 
 

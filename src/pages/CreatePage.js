@@ -6,29 +6,32 @@ import defaultImage from '../assets/images/sunset/default-image.png';
 import blankCanvas from '../assets/images/background/blankCanvas.jpg';
 import background from '../assets/images/sunset/background.png'
 // import { selectGender } from '../options/optionSlice';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Thumbnails from '../components/Thumbnails';
 import FilterSelection from '../components/FilterSelection';
 
 
 const CreatePage = () => {
-    const [gender, setGender] = useState("all");
-    const [age, setAge] = useState("all");
-    const [bodyLanguage, setBodyLanguage] = useState("all");
-    console.log(`Gender: ${gender} \n Age: ${age} \n BodyLanguage: ${bodyLanguage}`)
-    // const genderRef = useRef();
-    // function updateGender(e){const gender = genderRef.current.value}
+    const [gender, setGender] = useState("All")
+    const [age, setAge] = useState("All");
+    console.log(`Gender: ${gender} \n Age: ${age}`)
+    const [filteredHumans, setFilteredHumans] = useState([...HUMANIMAGELAYERS]);
 
-    // const [filterHuman, setFilterHuman] = useState({
-    //     gender: '',
-    //     age: '',
-    //     bodyLanguage: ''
-    // })
-    // console.log(`Gender: ${filterHuman.gender} - Age: ${filterHuman.age} - Body Language: ${filterHuman.bodyLanguage}`);
+    // const[state, setState] = useState({ gender: 'All', age: 'All', bodyLanguage: 'All'})
+    // const gender = state.gender
+    // const age = state.age
+    // const bodyLanguage = state.bodyLanguage
+
+    // function filterGender(e){
+    //     setState(prevState => {
+    //         return{...prevState, gender: e.target.value}
+    //     })
+    // }
 
     const [humanSelection, setHuman] = useState(0)
     const [dogSelection, setDog] = useState(0)
     const [BGSelection, setBG] = useState(0)
+
 
     const handleClick = (e) =>{
         if(e.currentTarget.classList.contains('human-thumbnail')){
@@ -55,8 +58,26 @@ const CreatePage = () => {
 
 
 
+
     return ( 
         <Container>
+
+            {/* <label>Gender</label>
+            <select className='mb-5' onChange={filterGender}>
+              <option>Male</option>
+              <option>Female</option>
+              <option>All</option>
+            </select> */}
+
+            {/* {images.map((img) => {
+                return(
+                    <div key={img.id} className={`d-flex align-items-center option-container`}>                        
+                        <img className='option-container__image' src={img.image}></img>
+                    </div>
+                )
+            })} */}
+
+
             <Row className='create-section-1'>
                 <Col md='6' className='preview-col'>
                     <Row className='preview-container'>
@@ -80,8 +101,7 @@ const CreatePage = () => {
                         {/* Choose Human */}
                         <FilterSelection label='Gender' subject='gender' setFilter={setGender} images={HUMANIMAGELAYERS}/>
                         <FilterSelection label='Age' subject='age' setFilter={setAge} images={HUMANIMAGELAYERS}/>
-                        <FilterSelection label='Body Language' subject='bodyLanguage' setFilter={setBodyLanguage} images={HUMANIMAGELAYERS}/>
-                        <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail'/>
+                        <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail' gender={gender} age={age}/>
 
                         {/* Choose Dog */}
                         <FilterSelection label='Dog Breed' subject='breed' setHuman={setDog} images={DOGIMAGELAYERS}/>
@@ -92,8 +112,8 @@ const CreatePage = () => {
                     </form>
                 </Col>
             </Row>
-            
         </Container>
+
      );
 }
  

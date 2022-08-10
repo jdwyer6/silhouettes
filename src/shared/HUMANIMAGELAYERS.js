@@ -11,66 +11,42 @@ export const HUMANIMAGELAYERS = [
         name: 'man_0',
         image: man_0,
         gender: 'Male',
-        age: 'Adult',
-        bodyLanguage: 'Standing',
-        shirt: '',
-        pants: '',
-        hair: ''
+        age: 'Adult'
     },
     {
         id: 1,
         name: 'man_1',
         image: man_1,
         gender: 'Male',
-        age: 'Adult',
-        bodyLanguage: 'Seated',
-        shirt: '',
-        pants: '',
-        hair: ''
+        age: 'Adult'
     },
     {
         id: 2,
         name: 'man_2',
         image: man_2,
         gender: 'Male',
-        age: 'Elderly',
-        bodyLanguage: 'Standing',
-        shirt: '',
-        pants: '',
-        hair: ''
+        age: 'Elderly'
     },
     {
         id: 3,
         name: 'woman_0',
         image: woman_0,
         gender: 'Female',
-        age: 'Adult',
-        bodyLanguage: 'Standing',
-        shirt: '',
-        pants: '',
-        hair: ''
+        age: 'Adult'
     },
     {
         id: 4,
         name: 'woman_1',
         image: woman_1,
         gender: 'Female',
-        age: 'Adult',
-        bodyLanguage: 'Standing',
-        shirt: '',
-        pants: '',
-        hair: ''
+        age: 'Adult'
     },
     {
         id: 5,
         name: 'womann_2',
         image: woman_2,
         gender: 'Female',
-        age: 'Adult',
-        bodyLanguage: 'Standing',
-        shirt: '',
-        pants: '',
-        hair: ''
+        age: 'Adult'
     }
 
 
