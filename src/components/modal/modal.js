@@ -27,7 +27,7 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, text, humanSelection, dogSelection, BGSelection}) => {
+const Modal = ({ handleClose, humanSelection, dogSelection, BGSelection}) => {
     return ( 
         <Backdrop onClick={handleClose}>
             <motion.div
@@ -37,20 +37,23 @@ const Modal = ({ handleClose, text, humanSelection, dogSelection, BGSelection}) 
                 initial="hidden"
                 animate="visible"
                 exit="exit">
-                <Row>
+                <Row className='mt-3'>
                     <h3>Cart</h3>
                 </Row>
-                <Row>
-                    <Col>
-                        <img src={blankCanvas} alt='blank-canvas' className='preview-container__blankCanvas'></img>
-                        <img src={BACKGROUNDIMAGES[BGSelection].image} alt="default-image" className='preview-container__previewBackground'></img>
-                        <img src={HUMANIMAGELAYERS[humanSelection].image} alt='human-image' className='preview-container__previewHuman'></img>
-                        <img src={DOGIMAGELAYERS[dogSelection].image} alt='dog-image' className='preview-container__previewDog'></img>
+                <Row className='cart-item-container d-flex justify-content-evenly mt-3'>
+                    <Col md='6' className='d-flex justify-content-center cart-preview-container cart-item-container__cart-col'>
+                        <img src={blankCanvas} alt='blank-canvas' className='cart-preview-container__blankCanvas'></img>
+                        <img src={BACKGROUNDIMAGES[BGSelection].image} alt="default-image" className='cart-preview-container__previewBackground'></img>
+                        <img src={HUMANIMAGELAYERS[humanSelection].image} alt='human-image' className='cart-preview-container__previewHuman'></img>
+                        <img src={DOGIMAGELAYERS[dogSelection].image} alt='dog-image' className='cart-preview-container__previewDog'></img>
+                    </Col>
+                    <Col md='6' className='d-flex justify-content-end cart-item-container__cart-col'>
+                        <h5>20'' x 20'' Canvas</h5>
                     </Col>
                 </Row>
-                <p>{humanSelection}</p>
-                <Button onClick={handleClose} className='button__bgTransparent w-25 my-1'>Continue Shopping</Button>
-                <Button onClick={handleClose} className='button__bgGray w-25 my-1'>Check Out</Button>
+                <p>Total: $29.99</p>
+                <Button onClick={handleClose} className='button__bgTransparent w-30 my-1'>Continue Shopping</Button>
+                <Button onClick={handleClose} className='button__bgGray w-30 my-1'>Check Out</Button>
             </motion.div>
         </Backdrop>
      );
