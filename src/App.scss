@@ -24,6 +24,7 @@
 
     &:hover{
         color: $color-gray-light;
+        cursor: pointer;
     }
 }
 
@@ -147,15 +148,98 @@
 }
 
 //Components
-.button-wide-transparentbg{
-    background-color: transparent;
-    color: $color-gray-dark;
-    width: 10rem;
+// .button-wide-transparentbg{
+//     background-color: transparent;
+//     color: $color-gray-dark;
+//     width: 12rem;
+//     margin: 5px;
 
-    &:hover{
-        background-color: $color-yellow;
-        border: 1px solid transparent;
+//     &:hover{
+//         background-color: $color-yellow;
+//         border: 1px solid transparent;
+//         color: black;
+//     }
+// }
+
+// .button-solidbg{
+//     background-color: $color-gray-dark;
+//     color: $color-white;
+//     width: 12rem;
+//     margin: 5px;
+//     border: 1px solid transparent;
+
+//     &:hover{
+//         background-color: rgba($color-gray-dark, .9);
+//         border: 1px solid $color-gray-dark;
+//     }
+// }
+
+.button{
+    width: 12rem;
+    margin: 5px;
+
+    &__bgTransparent{
+        background-color: transparent;
         color: black;
+        border: 1px solid $color-gray-dark;
+
+        &:hover{
+            background-color: $color-gray-dark;
+            border: 1px solid transparent;
+            color: white;
+        }
     }
+
+    &__bgPrimary{
+        background-color: $color-yellow;
+        color: $color-gray-dark;
+        border: 1px solid transparent;
+
+        &:hover{
+            background-color: transparent;
+            border: 1px solid $color-gray-dark;
+            color: black;
+        }
+    }
+
+    &__bgGray{
+        background-color: $color-gray-dark;
+        color: $color-white;
+        border: 1px solid transparent;
+
+        &:hover{
+            background-color: rgba($color-gray-dark, .9);
+            border: 1px solid transparent;
+            color: $color-white;
+        }
+    }
+
+
 }
 
+//Cart Modal
+.backdrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000000e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal{
+    width: clamp(50%, 700px, 90%);
+    height: min(50%, 300px);
+    background-color: $color-white;
+    margin: auto;
+    padding: 0, 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 11;
+}

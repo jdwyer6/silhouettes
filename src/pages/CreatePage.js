@@ -2,10 +2,7 @@ import { Container, Col, Row, Button } from 'reactstrap';
 import { HUMANIMAGELAYERS } from '../shared/HUMANIMAGELAYERS';
 import { DOGIMAGELAYERS } from '../shared/DOGIMAGELAYERS';
 import { BACKGROUNDIMAGES } from '../shared/BACKGROUNDIMAGES';
-import defaultImage from '../assets/images/sunset/default-image.png';
 import blankCanvas from '../assets/images/background/blankCanvas.jpg';
-import background from '../assets/images/sunset/background.png'
-// import { selectGender } from '../options/optionSlice';
 import { useState, useRef, useEffect } from 'react';
 import Thumbnails from '../components/Thumbnails_Human';
 import Thumbnails_Dog from '../components/Thumbnails_Dog';
@@ -13,40 +10,28 @@ import Thumbnails_Background from '../components/Thumbnails_Background';
 import FilterSelection from '../components/FilterSelection';
 
 
-const CreatePage = () => {
+const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection}) => {
     const [gender, setGender] = useState("All");
     const [age, setAge] = useState("All");
     const [breed, setBreed] = useState("All");
     const [bgTag, setBgTag] = useState('All');
     console.log(`Gender: ${gender} \n Age: ${age} \n Breed: ${breed} \n BgTag: ${bgTag}`)
- 
 
-    // const[state, setState] = useState({ gender: 'All', age: 'All', bodyLanguage: 'All'})
-    // const gender = state.gender
-    // const age = state.age
-    // const bodyLanguage = state.bodyLanguage
-
-    // function filterGender(e){
-    //     setState(prevState => {
-    //         return{...prevState, gender: e.target.value}
-    //     })
-    // }
-
-    const [humanSelection, setHuman] = useState(0)
-    const [dogSelection, setDog] = useState(0)
-    const [BGSelection, setBG] = useState(0)
+    // const [humanSelection, setHuman] = useState(0)
+    // const [dogSelection, setDog] = useState(0)
+    // const [BGSelection, setBG] = useState(0)
 
 
     const handleClick = (e) =>{
         if(e.currentTarget.classList.contains('human-thumbnail')){
             setHuman(e.currentTarget.id)
-            console.log("Human Selection: " + humanSelection);
+            // console.log("Human Selection: " + humanSelection);
         }else if(e.currentTarget.classList.contains('dog-thumbnail')){
             setDog(e.currentTarget.id)
-            console.log('Dog Selection: ' + dogSelection)
+            // console.log('Dog Selection: ' + dogSelection)
         }else if(e.currentTarget.classList.contains('bg-thumbnail')){
             setBG(e.currentTarget.id)
-            console.log('Background Selection: ' + BGSelection)
+            // console.log('Background Selection: ' + BGSelection)
         }else{
             console.log('Problem with selection')
         }
@@ -59,9 +44,6 @@ const CreatePage = () => {
         });
         e.currentTarget.classList.add('selected')
       }
-
-
-
 
     return ( 
         <Container>
@@ -96,7 +78,7 @@ const CreatePage = () => {
                         <FilterSelection label='Dog Breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
                         <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
 
-                        <Button className='my-3 button-wide-transparentbg'>Add to cart</Button>
+                        <Button className='my-3 button__bgPrimary'>Add to cart</Button>
 
                     </form>
                 </Col>
