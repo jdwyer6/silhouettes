@@ -7,15 +7,19 @@ import blankCanvas from '../assets/images/background/blankCanvas.jpg';
 import background from '../assets/images/sunset/background.png'
 // import { selectGender } from '../options/optionSlice';
 import { useState, useRef, useEffect } from 'react';
-import Thumbnails from '../components/Thumbnails';
+import Thumbnails from '../components/Thumbnails_Human';
+import Thumbnails_Dog from '../components/Thumbnails_Dog';
+import Thumbnails_Background from '../components/Thumbnails_Background';
 import FilterSelection from '../components/FilterSelection';
 
 
 const CreatePage = () => {
-    const [gender, setGender] = useState("All")
+    const [gender, setGender] = useState("All");
     const [age, setAge] = useState("All");
-    console.log(`Gender: ${gender} \n Age: ${age}`)
-    const [filteredHumans, setFilteredHumans] = useState([...HUMANIMAGELAYERS]);
+    const [breed, setBreed] = useState("All");
+    const [bgTag, setBgTag] = useState('All');
+    console.log(`Gender: ${gender} \n Age: ${age} \n Breed: ${breed} \n BgTag: ${bgTag}`)
+ 
 
     // const[state, setState] = useState({ gender: 'All', age: 'All', bodyLanguage: 'All'})
     // const gender = state.gender
@@ -62,21 +66,6 @@ const CreatePage = () => {
     return ( 
         <Container>
 
-            {/* <label>Gender</label>
-            <select className='mb-5' onChange={filterGender}>
-              <option>Male</option>
-              <option>Female</option>
-              <option>All</option>
-            </select> */}
-
-            {/* {images.map((img) => {
-                return(
-                    <div key={img.id} className={`d-flex align-items-center option-container`}>                        
-                        <img className='option-container__image' src={img.image}></img>
-                    </div>
-                )
-            })} */}
-
 
             <Row className='create-section-1'>
                 <Col md='6' className='preview-col'>
@@ -87,8 +76,8 @@ const CreatePage = () => {
                         <img src={DOGIMAGELAYERS[dogSelection].image} alt='dog-image' className='preview-container__previewDog'></img>
                     </Row>
                     <Row>
-                        <FilterSelection label='Backgrounds' subject='tag' setHuman={setBG} images={BACKGROUNDIMAGES}/> 
-                        <Thumbnails thumbnails={BACKGROUNDIMAGES} handleClick={handleClick} classIdentifier='bg-thumbnail'/>
+                        <FilterSelection label='Backgrounds' subject='tag' setHuman={setBG} setFilter={setBgTag} images={BACKGROUNDIMAGES}/> 
+                        <Thumbnails_Background thumbnails={BACKGROUNDIMAGES} handleClick={handleClick} classIdentifier='bg-thumbnail' bgTag={bgTag}/>
                     </Row>
 
                 </Col>
@@ -104,8 +93,8 @@ const CreatePage = () => {
                         <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail' gender={gender} age={age}/>
 
                         {/* Choose Dog */}
-                        <FilterSelection label='Dog Breed' subject='breed' setHuman={setDog} images={DOGIMAGELAYERS}/>
-                        <Thumbnails thumbnails={DOGIMAGELAYERS} handleClick={handleClick} classIdentifier='dog-thumbnail'/>
+                        <FilterSelection label='Dog Breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
+                        <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
 
                         <Button className='my-3 button-wide-transparentbg'>Add to cart</Button>
 

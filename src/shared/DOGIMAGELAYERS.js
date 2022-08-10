@@ -7,18 +7,18 @@ export const DOGIMAGELAYERS = [
         id: 0,
         name: 'german_shepard_0',
         image: german_shepard_0,
-        breed: 'german shepard'
+        breed: 'German Shepard'
     },
     {
         id: 1,
         name: 'australian_shepard',
         image: australian_shepard_0,
-        breed: 'australian shepard'
+        breed: 'Australian Shepard'
     },
     {
         id: 2,
         name: 'chihuahua_0',
         image: chihuahua_0,
-        breed: 'chihuahua'
+        breed: 'Chihuahua'
     }
 ];
