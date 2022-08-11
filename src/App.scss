@@ -253,5 +253,9 @@
 
 .cart-item-container{
     width: 100%;
+    border-top: 1px solid $color-gray-light;
+    border-bottom: 1px solid $color-gray-light;
+    padding: 15px;
+    margin: 20px;
 
 }

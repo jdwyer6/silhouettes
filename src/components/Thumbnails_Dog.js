@@ -28,6 +28,7 @@ const Thumbnails = ({thumbnails, handleClick, classIdentifier, breed }) => {
                         </div>
                     )
             })}
+
         </Row>
      );
 }

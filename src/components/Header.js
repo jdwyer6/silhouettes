@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Modal from './modal/modal';
 
 
-const Header = ({humanSelection, dogSelection, BGSelection}) => {
+const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartItems}) => {
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -29,7 +29,7 @@ const Header = ({humanSelection, dogSelection, BGSelection}) => {
             </Navbar>
 
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-                {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} humanSelection={humanSelection} dogSelection={dogSelection} BGSelection={BGSelection}/>}
+                {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} humanSelection={humanSelection} dogSelection={dogSelection} BGSelection={BGSelection} cartItems={cartItems} setCartItems={setCartItems}/>}
             </AnimatePresence>
         
 

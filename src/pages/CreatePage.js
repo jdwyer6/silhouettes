@@ -10,12 +10,12 @@ import Thumbnails_Background from '../components/Thumbnails_Background';
 import FilterSelection from '../components/FilterSelection';
 
 
-const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection}) => {
+const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems}) => {
     const [gender, setGender] = useState("All");
     const [age, setAge] = useState("All");
     const [breed, setBreed] = useState("All");
     const [bgTag, setBgTag] = useState('All');
-    console.log(`Gender: ${gender} \n Age: ${age} \n Breed: ${breed} \n BgTag: ${bgTag}`)
+    // console.log(`Gender: ${gender} \n Age: ${age} \n Breed: ${breed} \n BgTag: ${bgTag}`)
 
     // const [humanSelection, setHuman] = useState(0)
     // const [dogSelection, setDog] = useState(0)
@@ -25,13 +25,13 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
     const handleClick = (e) =>{
         if(e.currentTarget.classList.contains('human-thumbnail')){
             setHuman(e.currentTarget.id)
-            // console.log("Human Selection: " + humanSelection);
+            console.log("Human Selection: " + humanSelection);
         }else if(e.currentTarget.classList.contains('dog-thumbnail')){
             setDog(e.currentTarget.id)
-            // console.log('Dog Selection: ' + dogSelection)
+            console.log('Dog Selection: ' + dogSelection)
         }else if(e.currentTarget.classList.contains('bg-thumbnail')){
             setBG(e.currentTarget.id)
-            // console.log('Background Selection: ' + BGSelection)
+            console.log('Background Selection: ' + BGSelection)
         }else{
             console.log('Problem with selection')
         }
@@ -43,7 +43,14 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
             }
         });
         e.currentTarget.classList.add('selected')
-      }
+    }
+
+    const handleCartClick = () => {
+
+        setCartItems(current => [...current, {humanSelection: {humanSelection}, dogSelection:{dogSelection}, BGSelection:{BGSelection}, price:29.99}])
+        alert('One item added to your cart')        
+
+    }
 
     return ( 
         <Container>
@@ -78,7 +85,7 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
                         <FilterSelection label='Dog Breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
                         <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
 
-                        <Button className='my-3 button__bgPrimary'>Add to cart</Button>
+                        <Button className='my-3 button__bgPrimary' onClick={handleCartClick}>Add to cart</Button>
 
                     </form>
                 </Col>
