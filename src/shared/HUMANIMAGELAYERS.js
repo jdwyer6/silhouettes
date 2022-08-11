@@ -4,6 +4,8 @@ import man_2 from '../assets/images/sunset/man_2.png';
 import woman_0 from '../assets/images/sunset/woman_0.png';
 import woman_1 from '../assets/images/sunset/woman_1.png';
 import woman_2 from '../assets/images/sunset/woman_2.png';
+import child_boy_0 from '../assets/images/sunset/child_boy_0.png';
+import child_girl_0 from '../assets/images/sunset/child_girl_0.png';
 
 export const HUMANIMAGELAYERS = [
     {
@@ -43,10 +45,24 @@ export const HUMANIMAGELAYERS = [
     },
     {
         id: 5,
-        name: 'womann_2',
+        name: 'woman_2',
         image: woman_2,
         gender: 'Female',
         age: 'Adult'
+    },
+    {
+        id: 6,
+        name: 'child_boy_0',
+        image: child_boy_0,
+        gender: 'Male',
+        age: 'Child'
+    },
+    {
+        id: 7,
+        name: 'child_girl_0',
+        image: child_girl_0,
+        gender: 'Female',
+        age: 'Child'
     }
 
 

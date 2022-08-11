@@ -16,16 +16,16 @@ const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartIt
 
     return ( 
         <>
-            <Navbar className='header d-flex justify-content-between' expand='md'>
-            <NavLink className='navLink' to='/'>
-                <i className='fa fa-home fa-lg' />
-            </NavLink>
+            <Navbar className='header d-flex justify-content-between align-content-center' xs='12'>
+                <NavLink className='navLink' to='/'>
+                    <i className='fa fa-home fa-lg' />
+                </NavLink>
 
-            <NavLink to='/' className="mx-auto navLink">
-                <h1 className='col-4 my-0 header__siteTitle'>Paw Portraits</h1>
-            </NavLink>
+                <NavLink to='/' className="mx-auto navLink">
+                    <h1 className='col-4 my-0 header__siteTitle'>Paw Portraits</h1>
+                </NavLink>
 
-            <FaShoppingCart onClick={() => (modalOpen ? close() : open())} className='navLink'/>
+                <FaShoppingCart onClick={() => (modalOpen ? close() : open())} className='navLink'/>
             </Navbar>
 
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>

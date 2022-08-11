@@ -8,6 +8,8 @@ import Thumbnails from '../components/Thumbnails_Human';
 import Thumbnails_Dog from '../components/Thumbnails_Dog';
 import Thumbnails_Background from '../components/Thumbnails_Background';
 import FilterSelection from '../components/FilterSelection';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems}) => {
@@ -45,16 +47,14 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
         e.currentTarget.classList.add('selected')
     }
 
-    const handleCartClick = () => {
-
+    const handleCartClick = () => { 
         setCartItems(current => [...current, {humanSelection: {humanSelection}, dogSelection:{dogSelection}, BGSelection:{BGSelection}, price:29.99}])
-        alert('One item added to your cart')        
-
+        toast.success("Item added to cart", {position: toast.POSITION.TOP_CENTER});
     }
 
     return ( 
         <Container>
-
+<ToastContainer />
 
             <Row className='create-section-1'>
                 <Col md='6' className='preview-col'>
