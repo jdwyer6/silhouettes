@@ -14,6 +14,7 @@ function App() {
 
     return (
         <div className="App">
+
             <Header humanSelection={humanSelection} dogSelection={dogSelection} BGSelection={BGSelection} cartItems={cartItems} setCartItems={setCartItems}/>
             <Routes>
                 <Route path='/' element={<HomePage />}/>

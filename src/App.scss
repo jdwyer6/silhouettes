@@ -32,16 +32,21 @@
   background-color: $color-white;
   height: 2.5rem;
   box-shadow: 0px 0px 40px $color-gray-light;
-  width: 100%;
+  width: 100vw;
 
   &__siteTitle{
     font-size: 2rem;
     width: 200px;
-    // margin-top: .5rem;
+    text-align: center;
   }
 }
 
 // Home Page
+.home-container{
+    display: flex;
+    justify-content: center;
+}
+
 .hero-img-container{
     margin-top: 6rem;
     border-radius: 20px;
@@ -56,7 +61,7 @@
         background-image: linear-gradient(to right, transparent, rgba($color-white, .7), rgba($color-white, .8)), url('assets/images/background/hero.jpg');
         background-size: cover;
         background-position: center;
-  }
+    }
 
     &__text{
         width: 20rem;
@@ -240,18 +245,22 @@
 }
 
 .modal{
-    width: clamp(50%, 500px, 80%);
-    height: min(50%, 600px);
+    // width: clamp(50%, 500px, 80%);
+    width: 50vw;
+    height: 50vh;
+    // height: min(50%, 600px);
     background-color: $color-white;
-    margin: auto;
+    position: absolute;
+    // margin: auto;
     padding: 0, 2rem;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 11;
-    top: 25%;
-    left: 25%;
+    top: 25vh;
+    left: 25vw;
+    // transform: translate(500px, 500px);
 }
 
 .cart-item-container{
@@ -260,5 +269,65 @@
     border-bottom: 1px solid $color-gray-light;
     padding: 15px;
     margin: 20px;
+
+}
+
+@media (max-width: 1024px){
+    .hero-img-container{
+        margin-top: 3rem;
+        justify-content: center;
+
+        &__text{
+            position: static;
+            margin-top: 4rem;
+            text-align: center;
+            width: 90vw;
+        }
+
+        &__img{
+            border-radius: 20px;
+        }
+    }
+
+    .preview-container{
+        // width: 100px;
+        // height: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header__siteTitle{
+        font-size: 25px;
+    }
+
+
+
+    .create-section-1{
+        // display: flex;
+        // justify-content: center;
+        margin-top: 3vh;
+    }
+
+    .preview-col{
+        width: 100%;
+    }
+
+    .preview-container{
+        width: 90vw;
+        height: 90vw;
+        margin: auto;
+    }
+
+    //Modal
+    .backdrop{
+        height: 100vh;
+        width: 100vw;
+    }
+    .modal{
+        width: 90vw;
+        height: 80vh;
+        top: 10vh;
+        left: 5vw;
+    }
 
 }

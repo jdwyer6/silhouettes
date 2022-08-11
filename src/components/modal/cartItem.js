@@ -36,7 +36,7 @@ const CartItem = ({ humanSelection, dogSelection, BGSelection, price}) => {
     
     return ( 
         <Row className='cart-item-container d-flex justify-content-evenly mt-3'>
-        <Col md='6' className='d-flex justify-content-center cart-preview-container cart-item-container__cart-col'>
+        <Col md='5' className='d-flex justify-content-center cart-preview-container cart-item-container__cart-col'>
             <img src={blankCanvas} alt='blank-canvas' className='cart-preview-container__blankCanvas'></img>
             <img src={BGImage} alt="default-image" className='cart-preview-container__previewBackground'></img>
             <img src={humanImage} alt='human-image' className='cart-preview-container__previewHuman'></img>
@@ -45,6 +45,9 @@ const CartItem = ({ humanSelection, dogSelection, BGSelection, price}) => {
         <Col md='6' className='d-flex justify-content-end cart-item-container__cart-col'>
             <h5>20'' x 20'' Canvas</h5>
             <p>Price: {price}</p>
+        </Col>
+        <Col md='1'>
+            <Button>x</Button>    
         </Col>
     </Row>
      );

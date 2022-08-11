@@ -16,7 +16,7 @@ const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartIt
 
     return ( 
         <>
-            <Navbar className='header d-flex justify-content-between align-content-center' xs='12'>
+            <Navbar className='d-flex justify-content-between align-content-center header'>
                 <NavLink className='navLink' to='/'>
                     <i className='fa fa-home fa-lg' />
                 </NavLink>

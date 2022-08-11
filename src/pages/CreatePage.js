@@ -53,8 +53,8 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
     }
 
     return ( 
-        <Container>
-<ToastContainer />
+        <Container className='d-flex justify-content-center'>
+        <ToastContainer />
 
             <Row className='create-section-1'>
                 <Col md='6' className='preview-col'>
@@ -70,10 +70,10 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
                     </Row>
 
                 </Col>
-                <Col md='6' className='ms-5'>
+                <Col md='6' className='mx-lg-5 d-flex'>
                     <div>
-                        <h1>Sunset</h1>
-                        <p>A high-quality, custom canvas featuring you and your pup silhouetted by a golden sunset </p>
+                        <h1>Customize</h1>
+                        <p>A high-quality, custom canvas featuring you and your pup silhouetted by a scenic backdrop </p>
                     </div>
                     <form>
                         {/* Choose Human */}
