@@ -2,8 +2,6 @@ import { Row } from 'reactstrap';
 
 const Thumbnails = ({thumbnails, handleClick, classIdentifier, gender, age }) => {
     
-
-
     const humanResult = thumbnails.filter(function(img) {
         if(gender === 'All' && age === 'All'){
             return img;
@@ -15,11 +13,6 @@ const Thumbnails = ({thumbnails, handleClick, classIdentifier, gender, age }) =>
             return (img.gender == gender && img.age == age)
         }
     })
-
-
-
-
-
 
     return ( 
         <Row className='m-0'>
@@ -37,3 +30,4 @@ const Thumbnails = ({thumbnails, handleClick, classIdentifier, gender, age }) =>
 }
  
 export default Thumbnails;
+

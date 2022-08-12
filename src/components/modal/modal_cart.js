@@ -1,10 +1,6 @@
 import { motion } from 'framer-motion';
 import Backdrop from './backdrop';
 import { Button, Row, Col } from 'reactstrap';
-import { HUMANIMAGELAYERS } from '../../shared/HUMANIMAGELAYERS';
-import { DOGIMAGELAYERS } from '../../shared/DOGIMAGELAYERS';
-import { BACKGROUNDIMAGES } from '../../shared/BACKGROUNDIMAGES';
-import blankCanvas from '../../assets/images/background/blankCanvas.jpg';
 import CartItem from './cartItem';
 
 const dropIn = {
@@ -28,7 +24,7 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, humanSelection, dogSelection, BGSelection, cartItems, setCartItems}) => {
+const Modal = ({ handleClose, cartItems, setCartItems, openCheckoutModal, closeCheckoutModal, setCheckoutModalOpen, checkoutModalOpen}) => {
 
     let price;
     let subTotal = 0;
@@ -36,6 +32,12 @@ const Modal = ({ handleClose, humanSelection, dogSelection, BGSelection, cartIte
     let shipping = 0;
     let tax = 0; 
     let itemIndex = 0;
+
+    function handleOpenCheckout(){
+        handleClose()
+        setCheckoutModalOpen(true);
+        console.log(checkoutModalOpen)
+    }
 
     return ( 
         <Backdrop onClick={handleClose}>
@@ -68,10 +70,12 @@ const Modal = ({ handleClose, humanSelection, dogSelection, BGSelection, cartIte
                 <p className='my-0'>Tax: ${tax.toFixed(2)}</p>
                 <p className='fw-bold'>Total: ${(subTotal + tax + shipping).toFixed(2)}</p>
                 <Button onClick={handleClose} className='button__bgTransparent w-30 my-1'>Continue Shopping</Button>
-                <Button onClick={handleClose} className='button__bgGray w-30 my-1'>Check Out</Button>
+                <Button onClick={handleOpenCheckout} className='button__bgGray w-30 my-1'>Check Out</Button>
             </motion.div>
         </Backdrop>
      );
 }
  
 export default Modal;
+
+// onClick={() => (checkoutModalOpen ? {closeCheckoutModal} : {openCheckoutModal})}
