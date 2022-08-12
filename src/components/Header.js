@@ -16,13 +16,13 @@ const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartIt
 
     return ( 
         <>
-            <Navbar className='d-flex justify-content-between align-content-center header'>
+            <Navbar className='d-flex justify-content-between align-content-center header-nav'>
                 <NavLink className='navLink' to='/'>
                     <i className='fa fa-home fa-lg' />
                 </NavLink>
 
                 <NavLink to='/' className="mx-auto navLink">
-                    <h1 className='col-4 my-0 header__siteTitle'>Paw Portraits</h1>
+                    <h1 className='col-4 my-0 header-nav__siteTitle'>Paw Portraits</h1>
                 </NavLink>
 
                 <FaShoppingCart onClick={() => (modalOpen ? close() : open())} className='navLink'/>

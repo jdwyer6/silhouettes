@@ -14,10 +14,6 @@ const Thumbnails = ({thumbnails, handleClick, classIdentifier, breed }) => {
         
     })
 
-
-
-
-
     return ( 
         <Row className='m-0'>
 
