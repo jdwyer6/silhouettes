@@ -3,12 +3,14 @@ import { HUMANIMAGELAYERS } from '../../shared/HUMANIMAGELAYERS';
 import { DOGIMAGELAYERS } from '../../shared/DOGIMAGELAYERS';
 import { BACKGROUNDIMAGES } from '../../shared/BACKGROUNDIMAGES';
 import blankCanvas from '../../assets/images/background/blankCanvas.jpg';
+import { useEffect } from 'react';
 
-const CartItem = ({ humanSelection, dogSelection, BGSelection, price}) => {
+const CartItem = ({ humanSelection, dogSelection, BGSelection, price, itemIndex, cartItems, setCartItems}) => {
     
     let humanImage = ''
     let dogImage = ''
     let BGImage = ''
+
  
     HUMANIMAGELAYERS.forEach(img => {
         if(img.id == humanSelection.humanSelection){
@@ -32,6 +34,12 @@ const CartItem = ({ humanSelection, dogSelection, BGSelection, price}) => {
     }); 
 
 
+    function deleteItem(){
+        const newCartItems = cartItems.filter((item, index) => { return index !== itemIndex})
+
+        setCartItems(newCartItems)
+
+    }
 
     
     return ( 
@@ -47,7 +55,7 @@ const CartItem = ({ humanSelection, dogSelection, BGSelection, price}) => {
             <p>Price: {price}</p>
         </Col>
         <Col md='1'>
-            <Button>x</Button>    
+            <Button onClick={deleteItem}>x</Button>    
         </Col>
     </Row>
      );

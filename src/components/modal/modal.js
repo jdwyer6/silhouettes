@@ -35,6 +35,7 @@ const Modal = ({ handleClose, humanSelection, dogSelection, BGSelection, cartIte
     let total = 0;
     let shipping = 0;
     let tax = 0; 
+    let itemIndex = 0;
 
     return ( 
         <Backdrop onClick={handleClose}>
@@ -55,7 +56,8 @@ const Modal = ({ handleClose, humanSelection, dogSelection, BGSelection, cartIte
                         subTotal += item.price
                         shipping += item.price * .08
                         tax += item.price * .0925
-                        return <CartItem key={index} humanSelection={item.humanSelection} dogSelection={item.dogSelection} BGSelection={item.BGSelection} price={price}/>
+                        itemIndex = index
+                        return <CartItem key={index} itemIndex={itemIndex} humanSelection={item.humanSelection} dogSelection={item.dogSelection} BGSelection={item.BGSelection} price={price} cartItems={cartItems} setCartItems={setCartItems}/>
                     })}
                          
                         

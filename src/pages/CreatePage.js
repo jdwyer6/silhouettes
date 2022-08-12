@@ -58,8 +58,8 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
             <ToastContainer />
 
             <Row className='d-flex justify-content-center create-section'>
-                <Col md='6' sm= '12' className='testClass'>
-                    <div className="create-section__image-preview">
+                <Col md='12' lg='6' className='create-section__image-preview'>
+                    <div>
                         <img src={blankCanvas} alt='blank-canvas' className='create-section__image-preview--blankCanvas'></img>
                         <img src={BACKGROUNDIMAGES[BGSelection].image} alt="default-image" className='create-section__image-preview--previewBackground'></img>
                         <img src={HUMANIMAGELAYERS[humanSelection].image} alt='human-image' className='create-section__image-preview--previewHuman'></img>
@@ -68,7 +68,7 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
 
                 </Col>
 
-                <Col md='6' sm='12' className='mx-lg-5'>
+                <Col md='12' lg='6' className='mx-lg-5 mt-5 mt-lg-0'>
                     <div>
                         <h1>Customize</h1>
                         <p>A high-quality, custom canvas featuring you and your pup silhouetted by a scenic backdrop </p>
@@ -83,15 +83,15 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
 
             </Row>
 
-            <Row className='d-flex justify-content-center create-section'>
+            <Row className='d-flex justify-content-center'>
 
-                <Col md='6' sm= '12' className='create-section__select-background'>
+                <Col md='12' lg='5' className='create-section__select-background'>
                     <FilterSelection label='Backgrounds' subject='tag' setHuman={setBG} setFilter={setBgTag} images={BACKGROUNDIMAGES}/> 
                     <Thumbnails_Background thumbnails={BACKGROUNDIMAGES} handleClick={handleClick} classIdentifier='bg-thumbnail' bgTag={bgTag}/>
 
                 </Col>
 
-                <Col md='6'sm= '12' className='mx-lg-5 create-section_select-dog'>
+                <Col md='12' lg='6' className='create-section_select-dog'>
                         {/* Choose Dog */}
                         <FilterSelection label='Dog Breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
                         <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
