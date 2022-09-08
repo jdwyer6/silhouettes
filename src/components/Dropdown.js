@@ -15,7 +15,7 @@ function Drop({ direction, ...args }) {
   return (
     <div className="d-flex px-0">
       <Dropdown className='w-100' isOpen={dropdownOpen} toggle={toggle} direction={direction}>
-            <DropdownToggle className='w-100' caret>Card Type</DropdownToggle>
+            <DropdownToggle className='w-100' caret>Type of card</DropdownToggle>
             <DropdownMenu {...args}>
                 <DropdownItem>Visa</DropdownItem>
                 <DropdownItem>Mastercard</DropdownItem>

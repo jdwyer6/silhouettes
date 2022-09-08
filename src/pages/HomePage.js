@@ -8,8 +8,8 @@ const HomePage = () => {
             <Row className='hero-img-container'>
 
                 {/* <img src={heroImg} alt="heroImg" className='px-0 hero-img-container__img'/> */}
-                <Col sm='12' className='px-0 hero-img-container__img'></Col> 
-                <Col sm='12' className="d-flex flex-column align-items-center hero-img-container__text">
+                <Col className='px-0 hero-img-container__img'></Col> 
+                <Col className="align-items-center hero-img-container__text">
                     <h2>Custom canvas art at the click of a button</h2>
                     <p>The perfect gift for any animal-lover</p>
                     <Link to='/create'><Button color='dark'>Get Started</Button></Link>

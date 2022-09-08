@@ -70,8 +70,8 @@ const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, che
                 <p className='my-0'>Shipping: ${shipping.toFixed(2)}</p>
                 <p className='my-0'>Tax: ${tax.toFixed(2)}</p>
                 <p className='fw-bold'>Total: ${(subTotal + tax + shipping).toFixed(2)}</p>
-                <Button onClick={handleClose} className='button__bgTransparent w-30 my-1'>Continue Shopping</Button>
-                <Button onClick={handleOpenCheckout} className='button__bgGray w-30 my-1'>Check Out</Button>
+                <Button onClick={handleClose} className='button__bgTransparent my-1'>Continue Shopping</Button>
+                <Button onClick={handleOpenCheckout} className='button__bgGray w-50 my-1'>Check Out</Button>
             </motion.div>
         </Backdrop>
      );

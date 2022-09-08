@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Modal_Cart from './components/modal/modal_cart';
 import Modal_Checkout from './components/modal/modal_checkout';
 import CreditCardModal from './components/modal/modal_creditCard';
+import AddressModal from './components/modal/modal_address';
 
 function App() {
 
@@ -20,9 +21,13 @@ function App() {
     const [cartItems, setCartItems] = useState([])
     const [total, setTotal] = useState(0)
 
+    const [creditCardInfo, setCreditCardInfo] = useState({});
+    const [addressInfo, setAddressInfo] = useState({});
+
     const [modalOpen, setModalOpen] = useState(false);
     const [checkoutModalOpen, setCheckoutModalOpen] = useState(false)
     const [creditCardModalOpen, setCreditCardModalOpen] = useState(false)
+    const [addressModalOpen, setAddressModalOpen] = useState(false)
 
     const close = () => setModalOpen(false);
     const open = () => setModalOpen(true);
@@ -32,6 +37,9 @@ function App() {
 
     const closeCreditCardModal = () => setCreditCardModalOpen(false);
     const openCreditCardModal = () => setCreditCardModalOpen(true);
+
+    const closeAddressModal = () => setAddressModalOpen(false)
+    const openAddressModal = () => setAddressModalOpen(true)
 
 
 
@@ -74,11 +82,26 @@ function App() {
             </AnimatePresence>
 
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-                {checkoutModalOpen && <Modal_Checkout checkoutModalOpen={checkoutModalOpen} handleClose={closeCheckoutModal} cartItems={cartItems} setCartItems={setCartItems} total={total} closeCreditCardModal={closeCreditCardModal} openCreditCardModal={openCreditCardModal}/>}
+                {checkoutModalOpen && <Modal_Checkout 
+                    checkoutModalOpen={checkoutModalOpen} 
+                    handleClose={closeCheckoutModal} 
+                    cartItems={cartItems} 
+                    setCartItems={setCartItems} 
+                    total={total} 
+                    closeCreditCardModal={closeCreditCardModal} 
+                    openCreditCardModal={openCreditCardModal}
+                    creditCardInfo={creditCardInfo}
+                    openAddressModal={openAddressModal}
+                    addressInfo = {addressInfo}
+                    />}
             </AnimatePresence>
 
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-                {creditCardModalOpen && <CreditCardModal/>}
+                {creditCardModalOpen && <CreditCardModal setCreditCardInfo={setCreditCardInfo} creditCardInfo={creditCardInfo} closeCreditCardModal={closeCreditCardModal} openCheckoutModal={openCheckoutModal}/>}
+            </AnimatePresence>
+
+            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+                {addressModalOpen && <AddressModal setAddressInfo={setAddressInfo} addressInfo={addressInfo} closeAddressModal={closeAddressModal} openCheckoutModal={openCheckoutModal}/>}
             </AnimatePresence>
             
         </div>

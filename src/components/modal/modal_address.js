@@ -24,30 +24,28 @@ const dropIn = {
     }
 }
 
-const CreditCardModal = ({ closeCreditCardModal, setCreditCardInfo, openCheckoutModal}) => {
+const AddressModal = ({ closeAddressModal, setAddressInfo, openCheckoutModal}) => {
 
-    let type = '';
-    let number = '';
-    let expiration;
-    let cvv = '';
     let name = '';
+    let street = '';
+    let city = '';
+    let zip = '';
 
     function handleSubmit(){
-        setCreditCardInfo({
-            type: {type},
-            number: {number},
-            expiration: {expiration},
-            cvv: {cvv},
-            name: {name}
+        setAddressInfo({
+            name: {name},
+            street: {street},
+            city: {city},
+            zip: {zip}
         })
-
+        
         openCheckoutModal();
-        closeCreditCardModal();
+        closeAddressModal();
     }
 
 
     return ( 
-        <Backdrop onClick={closeCreditCardModal}>
+        <Backdrop onClick={closeAddressModal}>
             <motion.div
                 onClick={(e) => e.stopPropagation()}
                 className="modal"    
@@ -57,24 +55,21 @@ const CreditCardModal = ({ closeCreditCardModal, setCreditCardInfo, openCheckout
                 exit="exit">
 
                     <Row className='mt-3'>
-                        <h3>Add Credit Card</h3>
-                    </Row>
-                    <Row className='form-input mt-3'>
-                        <Drop />
+                        <h3>Add Shipping Address</h3>
                     </Row>
                     <Row className='form-input'>
-                        <Input placeholder='Card Number' onChange={(e)=> number = e.target.value}/>
+                        <Input placeholder="Customer's Name" onChange={(e)=> name = e.target.value}/>
+                    </Row>
+                    <Row className='form-input'>
+                        <Input placeholder="Shipping Address" onChange={(e)=> street = e.target.value}/>
                     </Row>
                     <Row className='form-input'>
                         <Col md='6' className='p-0 me-md-2 my-md-0'>
-                            <Input type='date' onChange={(e)=> expiration = e.target.valueAsDate}/>
+                            <Input placeholder='City' onChange={(e)=> city = e.target.value}/>
                         </Col>
                         <Col className='p-0 ms-md-2 my-md-0 mt-3'>
-                            <Input placeholder='CVV (3 digits)' onChange={(e)=> cvv = e.target.value}/>
+                            <Input placeholder='Zip' onChange={(e)=> zip = e.target.value}/>
                         </Col>
-                    </Row>
-                    <Row className='form-input'>
-                        <Input placeholder="Cardholder's name" onChange={(e)=> name = e.target.value}/>
                     </Row>
 
                     <Row className='form-input'>
@@ -82,7 +77,7 @@ const CreditCardModal = ({ closeCreditCardModal, setCreditCardInfo, openCheckout
                             <Button onClick={handleSubmit} className='button__bgGray w-100'>Save</Button>
                         </Col>
                         <Col className='text-center pe-0 me-0'>
-                            <Button onClick={closeCreditCardModal} className='button__bgGray w-100'>Cancel</Button>
+                            <Button onClick={closeAddressModal} className='button__bgGray w-100'>Cancel</Button>
                         </Col>
                     </Row>
 
@@ -92,4 +87,4 @@ const CreditCardModal = ({ closeCreditCardModal, setCreditCardInfo, openCheckout
      );
 }
  
-export default CreditCardModal;
+export default AddressModal;

@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import Backdrop from './backdrop';
 import { Button, Row } from 'reactstrap';
+import { FaCheckCircle } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const dropIn = {
     hidden: {
@@ -23,13 +26,23 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, total, closeCreditCardModal, openCreditCardModal}) => {
+const Modal = ({ handleClose, cartItems, total, openAddressModal, openCreditCardModal, creditCardInfo, addressInfo}) => {
 
 
     function addCreditCard(){
         openCreditCardModal();
         handleClose();
 
+    }
+
+    function addShippingAddress(){
+        openAddressModal()
+        handleClose();
+    }
+
+    function handleSubmitOrder(){
+        toast.success("Thank you for your order", {position: toast.POSITION.TOP_CENTER});
+        handleClose();
     }
 
     return ( 
@@ -49,13 +62,19 @@ const Modal = ({ handleClose, cartItems, total, closeCreditCardModal, openCredit
                 </Row>
 
                 <p className='fw-bold'>Total: ${(total)}</p>
-                <Button onClick={addCreditCard} className='button__bgTransparent w-30 my-1'>Add Credit Card</Button>
+                {Object.keys(creditCardInfo).length === 0 ? (
+                    <Button onClick={addCreditCard} className='button__bgTransparent w-30 my-1'>Add Credit Card</Button>
+                ) : (
+                <p><FaCheckCircle style={{color:'green'}}/> Credit Card Added </p>
+                )}
 
-                {/* <Form className={cartItems.length > 0 ? ('d-none'):('small')}>
-                    Text
-                </Form> */}
-                <Button className='button__bgTransparent w-30 my-1'>Add Shipping Address</Button>
-                <Button onClick={handleClose} className='button__bgGray w-30 my-1'>Place Order</Button>
+                {Object.keys(addressInfo).length === 0 ? (
+                    <Button onClick={addShippingAddress} className='button__bgTransparent my-1'>Add Shipping Address</Button>
+                ) : (
+                    <p><FaCheckCircle style={{color:'green'}}/> Shipping Address Added </p>
+                )}
+                
+                <Button onClick={handleSubmitOrder} className='button__bgGray w-50 my-1'>Place Order</Button>
             </motion.div>
         </Backdrop>
      );
