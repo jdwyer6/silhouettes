@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Backdrop from './backdrop';
-import { Button, Row, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Row } from 'reactstrap';
 
 const dropIn = {
     hidden: {
@@ -23,16 +23,13 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, setCartItems}) => {
+const Modal = ({ handleClose, cartItems, total, closeCreditCardModal, openCreditCardModal}) => {
 
-    let price;
-    let subTotal = 0;
-    let total = 0;
-    let shipping = 0;
-    let tax = 0; 
 
-    function displayFields(){
-        
+    function addCreditCard(){
+        openCreditCardModal();
+        handleClose();
+
     }
 
     return ( 
@@ -51,11 +48,8 @@ const Modal = ({ handleClose, cartItems, setCartItems}) => {
                     {cartItems.length} item(s) in cart
                 </Row>
 
-                <p className='my-0'>Sub Total: ${subTotal}</p>
-                <p className='my-0'>Shipping: ${shipping.toFixed(2)}</p>
-                <p className='my-0'>Tax: ${tax.toFixed(2)}</p>
-                <p className='fw-bold'>Total: ${(subTotal + tax + shipping).toFixed(2)}</p>
-                <Button onClick={displayFields} className='button__bgTransparent w-30 my-1'>Add Credit Card</Button>
+                <p className='fw-bold'>Total: ${(total)}</p>
+                <Button onClick={addCreditCard} className='button__bgTransparent w-30 my-1'>Add Credit Card</Button>
 
                 {/* <Form className={cartItems.length > 0 ? ('d-none'):('small')}>
                     Text

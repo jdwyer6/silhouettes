@@ -3,6 +3,9 @@ import bg_1 from '../assets/images/sunset/backgrounds/bg_1.png';
 import bg_2 from '../assets/images/sunset/backgrounds/bg_2.png';
 import bg_3 from '../assets/images/sunset/backgrounds/bg_3.png';
 import bg_4 from '../assets/images/sunset/backgrounds/bg_4.png';
+import bg_5 from '../assets/images/sunset/backgrounds/bg_5.png';
+import bg_6 from '../assets/images/sunset/backgrounds/bg_6.png';
+import bg_7 from '../assets/images/sunset/backgrounds/bg_7.png';
 
 export const BACKGROUNDIMAGES = [
     {
@@ -33,6 +36,24 @@ export const BACKGROUNDIMAGES = [
         id: 4,
         name: 'bg_4',
         image: bg_4,
+        tag: 'Sunset'
+    },
+    {
+        id: 5,
+        name: 'bg_5',
+        image: bg_5,
+        tag: 'Night'
+    },
+    {
+        id: 6,
+        name: 'bg_6',
+        image: bg_6,
+        tag: 'Night'
+    },
+    {
+        id: 7,
+        name: 'bg_7',
+        image: bg_7,
         tag: 'Sunset'
     }
 

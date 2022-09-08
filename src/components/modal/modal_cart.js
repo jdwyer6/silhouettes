@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Backdrop from './backdrop';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, Row } from 'reactstrap';
 import CartItem from './cartItem';
 
 const dropIn = {
@@ -24,18 +24,19 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, setCartItems, openCheckoutModal, closeCheckoutModal, setCheckoutModalOpen, checkoutModalOpen}) => {
+const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, checkoutModalOpen, setTotal}) => {
 
     let price;
     let subTotal = 0;
-    let total = 0;
     let shipping = 0;
     let tax = 0; 
     let itemIndex = 0;
 
+
     function handleOpenCheckout(){
         handleClose()
         setCheckoutModalOpen(true);
+        setTotal((subTotal + tax + shipping).toFixed(2))
         console.log(checkoutModalOpen)
     }
 

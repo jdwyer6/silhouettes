@@ -2,22 +2,13 @@ import { Navbar, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.css';
 import { FaShoppingCart } from "react-icons/fa";
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import Modal_Cart from './modal/modal_cart';
-import Modal_Checkout from './modal/modal_checkout';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import { useState } from 'react';
+// import Modal_Cart from './modal/modal_cart';
+// import Modal_Checkout from './modal/modal_checkout';
 
 
-const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartItems}) => {
-
-    const [modalOpen, setModalOpen] = useState(false);
-    const [checkoutModalOpen, setCheckoutModalOpen] = useState(false)
-
-    const close = () => setModalOpen(false);
-    const open = () => setModalOpen(true);
-
-    const closeCheckoutModal = () => setCheckoutModalOpen(false);
-    const openCheckoutModal = () => setCheckoutModalOpen(true);
+const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartItems, total, setTotal, modalOpen, open, close}) => {
 
     return ( 
         <>
@@ -30,28 +21,18 @@ const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartIt
                     <h1 className='col-4 my-0 header-nav__siteTitle'>Paw Portraits</h1>
                 </NavLink>
 
-                <FaShoppingCart onClick={() => (modalOpen ? close() : open())} className='navLink'/>
+                <div className="shopping-cart navLink">
+                    <FaShoppingCart onClick={() => (modalOpen ? close() : open())} className='shopping-cart__icon'/>
+                    {cartItems.length > 0 ? (
+                        <div className="shopping-cart__notification">
+                            <p>{cartItems.length}</p>
+                        </div>
+                    ) : <></>}
+
+                    
+                </div>
+
             </Navbar>
-
-            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-                {modalOpen && <Modal_Cart 
-                    modalOpen={modalOpen} 
-                    handleClose={close} 
-                    humanSelection={humanSelection} 
-                    dogSelection={dogSelection} 
-                    BGSelection={BGSelection} 
-                    cartItems={cartItems} 
-                    setCartItems={setCartItems} 
-                    closeCheckoutModal={closeCheckoutModal} 
-                    openCheckoutModal={openCheckoutModal} 
-                    setCheckoutModalOpen={setCheckoutModalOpen}
-                    checkoutModalOpen={checkoutModalOpen}
-                    />}
-            </AnimatePresence>
-
-            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-                {checkoutModalOpen && <Modal_Checkout checkoutModalOpen={checkoutModalOpen} handleClose={closeCheckoutModal} cartItems={cartItems} setCartItems={setCartItems}/>}
-            </AnimatePresence>
         
 
         </>

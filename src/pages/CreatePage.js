@@ -10,9 +10,10 @@ import Thumbnails_Background from '../components/Thumbnails_Background';
 import FilterSelection from '../components/FilterSelection';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion, AnimatePresence } from 'framer-motion';
 
 
-const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems}) => {
+const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems, modalOpen, open, close}) => {
     const [gender, setGender] = useState("All");
     const [age, setAge] = useState("All");
     const [breed, setBreed] = useState("All");
@@ -49,7 +50,8 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
 
     const handleCartClick = () => { 
         setCartItems(current => [...current, {humanSelection: {humanSelection}, dogSelection:{dogSelection}, BGSelection:{BGSelection}, price:29.99}])
-        toast.success("Item added to cart", {position: toast.POSITION.TOP_CENTER});
+        // toast.success("Item added to cart", {position: toast.POSITION.TOP_CENTER});
+        modalOpen ? close() : open()
     }
 
     return ( 
@@ -71,7 +73,7 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
                 <Col md='12' lg='6' className='mx-lg-5 mt-5 mt-lg-0'>
                     <div>
                         <h1>Customize</h1>
-                        <p>A high-quality, custom canvas featuring you and your pup silhouetted by a scenic backdrop </p>
+                        <p>A high-quality, custom canvas featuring you and your pup silhouetted by a scenic backdrop.</p>
                     </div>
 
                     {/* Choose Human */}
@@ -100,7 +102,10 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
                 </Col>
 
             </Row>
+
         </Container>
+
+        
 
     );
 }
