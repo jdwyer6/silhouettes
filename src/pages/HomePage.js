@@ -4,18 +4,30 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     return ( 
-        <Container className='d-flex align-items-center home-container'>
-            <Row className='hero-img-container'>
+        <>
+            <Container className='d-flex align-items-center home-container'>
+                <Row className='hero-img-container'>
 
-                {/* <img src={heroImg} alt="heroImg" className='px-0 hero-img-container__img'/> */}
-                <Col className='px-0 hero-img-container__img'></Col> 
-                <Col className="align-items-center hero-img-container__text">
-                    <h2>Custom canvas art at the click of a button</h2>
+                    {/* <img src={heroImg} alt="heroImg" className='px-0 hero-img-container__img'/> */}
+                    <Col className='px-0 hero-img-container__img'></Col> 
+                    <Col className="align-items-center hero-img-container__text hidden-on-small">
+                        <h2>Custom canvas art at the click of a button</h2>
+                        <p>The perfect gift for any animal-lover</p>
+                        <Link to='/create'><Button color='dark'>Get Started</Button></Link>
+                    </Col>
+                </Row>
+            </Container>
+            <Container className='text-center mt-3 visible-on-small'>
+                <Row >
+                    <h2>Custom canvas art</h2>
                     <p>The perfect gift for any animal-lover</p>
+                </Row>
+                <Row>
                     <Link to='/create'><Button color='dark'>Get Started</Button></Link>
-                </Col>
-            </Row>
-        </Container>
+                </Row>
+            </Container>
+        </>
+
      );
 }
  

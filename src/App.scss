@@ -75,20 +75,6 @@
 
 }
 
-// @media (max-width: 600px){
-
-//     .hero-img-container{
-//         position: static;
-//         width: 100%;
-//         display: flex;
-//         flex-direction: column;
-//     }
-//     .hero-img-container__text{
-//         position: static;
-//         width: 100%;
-//     }
-// }
-
   //Create Page
 .create-section{
     margin-top: 5vh;
@@ -309,6 +295,10 @@
         margin-top: 10vh;
     }
 
+    .visible-on-small{
+        display: none;
+    }
+
 
 }
 
@@ -318,13 +308,18 @@
         left: 5vw;
     }
 
-    .button__bgTransparent{
-        width: 80%;
+    // .button__bgTransparent{
+    //     width: 80%;
+    // }
+
+    // .button__bgGray{
+    //     width: 80%;
+    // }
+
+    .hidden-on-small{
+        display: none;
     }
 
-    .button__bgGray{
-        width: 80%;
-    }
 }
 
 //Cart

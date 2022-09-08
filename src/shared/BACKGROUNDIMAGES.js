@@ -6,6 +6,9 @@ import bg_4 from '../assets/images/sunset/backgrounds/bg_4.png';
 import bg_5 from '../assets/images/sunset/backgrounds/bg_5.png';
 import bg_6 from '../assets/images/sunset/backgrounds/bg_6.png';
 import bg_7 from '../assets/images/sunset/backgrounds/bg_7.png';
+import bg_8 from '../assets/images/sunset/backgrounds/bg_8.png';
+import bg_9 from '../assets/images/sunset/backgrounds/bg_9.png';
+import bg_10 from '../assets/images/sunset/backgrounds/bg_10.png';
 
 export const BACKGROUNDIMAGES = [
     {
@@ -55,7 +58,31 @@ export const BACKGROUNDIMAGES = [
         name: 'bg_7',
         image: bg_7,
         tag: 'Sunset'
-    }
+    },
+    {
+        id: 8,
+        name: 'bg_8',
+        image: bg_8,
+        tag: 'Water'
+    },
+    {
+        id: 9,
+        name: 'bg_9',
+        image: bg_9,
+        tag: 'Rain'
+    },
+    {
+        id: 10,
+        name: 'bg_10',
+        image: bg_10,
+        tag: 'Sunset'
+    },
+    // {
+    //     id: ,
+    //     name: '',
+    //     image: ,
+    //     tag: ''
+    // },
 
 
 
