@@ -11,6 +11,11 @@ import FilterSelection from '../components/FilterSelection';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import Details from '../sections/Details';
+import FAQ from '../sections/FAQ';
+import Reviews from '../sections/Reviews';
+import ShippingInfo from '../sections/ShippingInfo';
+
 
 
 const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems, modalOpen, open, close}) => {
@@ -18,11 +23,9 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
     const [age, setAge] = useState("All");
     const [breed, setBreed] = useState("All");
     const [bgTag, setBgTag] = useState('All');
-    // console.log(`Gender: ${gender} \n Age: ${age} \n Breed: ${breed} \n BgTag: ${bgTag}`)
 
-    // const [humanSelection, setHuman] = useState(0)
-    // const [dogSelection, setDog] = useState(0)
-    // const [BGSelection, setBG] = useState(0)
+    const [section, setSection] = useState(0);
+    const infoSections = [<Details />, <ShippingInfo />, <Reviews />, <FAQ /> ];
 
 
     const handleClick = (e) =>{
@@ -58,48 +61,77 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
         <Container>
 
             <ToastContainer />
+            <Row className='create-section'>
+                <Col xs='12' lg='6'>
+                    <Col className='mx-auto create-section__image-preview'>
+                        <div className='x'>
+                            <img src={blankCanvas} alt='blank-canvas' className='create-section__image-preview--blankCanvas'></img>
+                            <img src={BACKGROUNDIMAGES[BGSelection].image} alt="default-image" className='create-section__image-preview--previewBackground'></img>
+                            <img src={HUMANIMAGELAYERS[humanSelection].image} alt='human-image' className='create-section__image-preview--previewHuman'></img>
+                            <img src={DOGIMAGELAYERS[dogSelection].image} alt='dog-image' className='create-section__image-preview--previewDog'></img>
+                        </div>
+                    </Col>
+                    <Col className='my-5'>
+                        <ul className="nav nav-tabs">
+                            <li className="nav-item">
+                                <a className={section === 0 ? "nav-link text-dark active" : "nav-link text-dark"} aria-current="page" onClick={()=>setSection(0)}>Details</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className={section === 1 ? "nav-link text-dark active" : "nav-link text-dark"} onClick={()=>setSection(1)}>Shipping Info</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className={section === 2 ? "nav-link text-dark active" : "nav-link text-dark"} onClick={()=>setSection(2)}>Reviews</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className={section === 3 ? "nav-link text-dark active" : "nav-link text-dark"} onClick={()=>setSection(3)}>FAQ</a>
+                            </li>
+                        </ul>
+                        <div className='my-3'>
+                            {infoSections[section]}
+                        </div>
+                    </Col>
 
-            <Row className='d-flex justify-content-center create-section'>
-                <Col md='12' lg='6' className='create-section__image-preview'>
-                    <div>
-                        <img src={blankCanvas} alt='blank-canvas' className='create-section__image-preview--blankCanvas'></img>
-                        <img src={BACKGROUNDIMAGES[BGSelection].image} alt="default-image" className='create-section__image-preview--previewBackground'></img>
-                        <img src={HUMANIMAGELAYERS[humanSelection].image} alt='human-image' className='create-section__image-preview--previewHuman'></img>
-                        <img src={DOGIMAGELAYERS[dogSelection].image} alt='dog-image' className='create-section__image-preview--previewDog'></img>
-                    </div>
-
+                    
                 </Col>
 
-                <Col md='12' lg='6' className='mx-lg-5 mt-5 mt-lg-0'>
-                    <div>
-                        <h1>Customize</h1>
-                        <p>A high-quality, custom canvas featuring you and your pup silhouetted by a scenic backdrop.</p>
-                    </div>
+                <Col>
+                    <Col className='mt-5 mt-lg-0 mx-lg-5 create-section__select-background'>
+                        <h3>Select a background</h3>
+                        <FilterSelection label='Backgrounds' subject='tag' setHuman={setBG} setFilter={setBgTag} images={BACKGROUNDIMAGES}/> 
+                        <Thumbnails_Background thumbnails={BACKGROUNDIMAGES} handleClick={handleClick} classIdentifier='bg-thumbnail' bgTag={bgTag}/>
+                    </Col>
+                    <Col className='mx-lg-5 mt-5'>
+                        <div>
+                            <h3>Select a human</h3>
+                        </div>
+                        {/* Choose Human */}
+                        <FilterSelection label='Gender' subject='gender' setFilter={setGender} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Age' subject='age' setFilter={setAge} images={HUMANIMAGELAYERS}/>
+                        <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail' gender={gender} age={age}/>
+                    </Col>
 
-                    {/* Choose Human */}
-                    <FilterSelection label='Gender' subject='gender' setFilter={setGender} images={HUMANIMAGELAYERS}/>
-                    <FilterSelection label='Age' subject='age' setFilter={setAge} images={HUMANIMAGELAYERS}/>
-                    <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail' gender={gender} age={age}/>
+                    <Col className='mx-lg-5 my-5 create-section_select-dog'>
+                        <h3>Select a pup</h3>
+                        {/* Choose Dog */}
+                        <FilterSelection label='Dog Breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
+                        <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
+                        <Button className='my-3 button__bgPrimary' onClick={handleCartClick}>Add to cart</Button>
+                    </Col>
 
                 </Col>
 
             </Row>
 
+
+            <Row className='d-flex justify-content-center create-section'>
+            </Row>
+
+
             <Row className='d-flex justify-content-center'>
 
-                <Col md='12' lg='5' className='create-section__select-background'>
-                    <FilterSelection label='Backgrounds' subject='tag' setHuman={setBG} setFilter={setBgTag} images={BACKGROUNDIMAGES}/> 
-                    <Thumbnails_Background thumbnails={BACKGROUNDIMAGES} handleClick={handleClick} classIdentifier='bg-thumbnail' bgTag={bgTag}/>
 
-                </Col>
 
-                <Col md='12' lg='6' className='create-section_select-dog'>
-                        {/* Choose Dog */}
-                        <FilterSelection label='Dog Breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
-                        <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
 
-                        <Button className='my-3 button__bgPrimary' onClick={handleCartClick}>Add to cart</Button>
-                </Col>
 
             </Row>
 
