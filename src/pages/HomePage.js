@@ -35,12 +35,12 @@ const HomePage = () => {
                     <Col className='me-3 mt-5 position-relative get-started'>
                         <img src={Dog} width='100%' className='overflow-none' style={{borderRadius: '20px'}}/>
                         <h2 className='position-absolute text-white gs-text'>Dogs</h2>
-                        <Button>Let's Go!</Button>
+                        <Button className='position-absolute gs-button'>Let's Go!</Button>
                     </Col>
                     <Col className='ms-3 mt-5 position-relative get-started'>
                         <img src={Cat} width='100%' className='overflow-none' style={{borderRadius: '20px'}}/>
                         <h2 className='position-absolute text-white gs-text'>Other Pets</h2>
-                        <Button>Let's Go!</Button>
+                        <Button className='position-absolute gs-button'>Let's Go!</Button>
                     </Col>
                 </Row>
             </Container>
