@@ -26,7 +26,7 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, total, openAddressModal, openCreditCardModal, creditCardInfo, addressInfo}) => {
+const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, openCreditCardModal, creditCardInfo, addressInfo}) => {
 
 
     function addCreditCard(){
@@ -41,6 +41,7 @@ const Modal = ({ handleClose, cartItems, total, openAddressModal, openCreditCard
     }
 
     function handleSubmitOrder(){
+        setCartItems([])
         toast.success("Thank you for your order", {position: toast.POSITION.TOP_CENTER});
         handleClose();
     }
