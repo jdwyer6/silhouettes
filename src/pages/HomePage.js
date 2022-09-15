@@ -9,8 +9,8 @@ import Cat from '../assets/images/Cat.png';
 const HomePage = () => {
     return ( 
         <>
-            <Container className='d-flex align-items-center mx-auto'>
-                <Row className='mx-auto hero-img-container'>
+            <Container className='d-flex p-0 align-items-center mx-auto'>
+                <Row className='mx-auto hero-img-container float-on-hover'>
 
                     {/* <img src={heroImg} alt="heroImg" className='px-0 hero-img-container__img'/> */}
                     <Col className='px-0 hero-img-container__img'></Col> 
@@ -32,15 +32,21 @@ const HomePage = () => {
             </Container>
             <Container>
                 <Row>
-                    <Col className='me-3 mt-5 position-relative get-started'>
-                        <img src={Dog} width='100%' className='overflow-none' style={{borderRadius: '20px'}}/>
+                    <Col className='me-3 mt-5 p-0 position-relative get-started float-on-hover' style={{borderRadius: '20px', overflow: 'hidden'}}>
+                        <img src={Dog} width='100%'/>
                         <h2 className='position-absolute text-white gs-text'>Dogs</h2>
-                        <Button className='position-absolute gs-button'>Let's Go!</Button>
+                        <Link to='/create'>
+                            <Button className='position-absolute gs-button'>Let's Go!</Button>
+                        </Link>
+                        
                     </Col>
-                    <Col className='ms-3 mt-5 position-relative get-started'>
-                        <img src={Cat} width='100%' className='overflow-none' style={{borderRadius: '20px'}}/>
+                    <Col className='ms-3 p-0 mt-5 position-relative get-started float-on-hover' style={{borderRadius: '20px', overflow: 'hidden'}}>
+                        <img src={Cat} width='100%' />
                         <h2 className='position-absolute text-white gs-text'>Other Pets</h2>
-                        <Button className='position-absolute gs-button'>Let's Go!</Button>
+                        <Link to='/OtherPets'>
+                            <Button className='position-absolute gs-button'>Let's Go!</Button>
+                        </Link>
+
                     </Col>
                 </Row>
             </Container>

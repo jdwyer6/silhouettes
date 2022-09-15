@@ -24,7 +24,7 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, checkoutModalOpen, setTotal}) => {
+const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, checkoutModalOpen, setTotal, otherPetSelection}) => {
 
     let price;
     let subTotal = 0;
@@ -60,7 +60,7 @@ const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, che
                         shipping += item.price * .08
                         tax += item.price * .0925
                         itemIndex = index
-                        return <CartItem key={index} itemIndex={itemIndex} humanSelection={item.humanSelection} dogSelection={item.dogSelection} BGSelection={item.BGSelection} price={price} cartItems={cartItems} setCartItems={setCartItems}/>
+                        return <CartItem key={index} itemIndex={itemIndex} humanSelection={item.humanSelection} dogSelection={item.dogSelection} BGSelection={item.BGSelection} price={price} cartItems={cartItems} setCartItems={setCartItems} otherPetSelection={otherPetSelection}/>
                     })}
                          
                         

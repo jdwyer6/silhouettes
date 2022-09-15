@@ -52,22 +52,22 @@ export default class Responsive extends Component {
         <div className='my-5'>
             <h2> Check it out! </h2>
             <Slider {...settings} style={{margin: '0 -1rem'}}>
-              <div className='px-2'>
+              <div className='px-2 bgChange-on-hover'>
                 <img src={preview_1} style={{width: '100%', borderRadius: '10%'}}/>
               </div>
-              <div className='px-2'>
+              <div className='px-2 bgChange-on-hover'>
                 <img src={preview_2} style={{width: '100%', borderRadius: '10%'}}/>
               </div>
-              <div className='px-2'>
+              <div className='px-2 bgChange-on-hover'>
                 <img src={preview_3} style={{width: '100%', borderRadius: '10%'}}/>
               </div>
-              <div className='px-2'>
+              <div className='px-2 bgChange-on-hover'>
                 <img src={preview_4} style={{width: '100%', borderRadius: '10%'}}/>
               </div>
-              <div className='px-2'>
+              <div className='px-2 bgChange-on-hover'>
                 <img src={preview_5} style={{width: '100%', borderRadius: '10%'}}/>
               </div>
-              <div className='px-2'>
+              <div className='px-2 bgChange-on-hover'>
                 <img src={preview_6} style={{width: '100%', borderRadius: '10%'}}/>
               </div>
             </Slider>

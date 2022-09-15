@@ -9,6 +9,7 @@ import Modal_Cart from './components/modal/modal_cart';
 import Modal_Checkout from './components/modal/modal_checkout';
 import CreditCardModal from './components/modal/modal_creditCard';
 import AddressModal from './components/modal/modal_address';
+import OtherPets from './pages/OtherPets';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     const [humanSelection, setHuman] = useState(0)
     const [dogSelection, setDog] = useState(0)
     const [BGSelection, setBG] = useState(0)
+    const [otherPetSelection, setOtherPetSelection] = useState(0);
     const [cartItems, setCartItems] = useState([])
     const [total, setTotal] = useState(0)
 
@@ -49,7 +51,8 @@ function App() {
             <Header humanSelection={humanSelection} dogSelection={dogSelection} BGSelection={BGSelection} cartItems={cartItems} setCartItems={setCartItems} total={total} setTotal={setTotal} modalOpen={modalOpen} open={open} close={close}/>
             <Routes>
                 <Route path='/' element={<HomePage />}/>
-                <Route path='create' element={<CreatePage setHuman={setHuman} 
+                <Route path='create' element={<CreatePage 
+                    setHuman={setHuman} 
                     humanSelection={humanSelection} 
                     setDog={setDog} 
                     dogSelection={dogSelection} 
@@ -61,7 +64,24 @@ function App() {
                     open={open}
                     close={close}
                     />}
-                    />
+                />
+                <Route path='OtherPets' element={<OtherPets 
+                        setHuman={setHuman} 
+                        humanSelection={humanSelection} 
+                        setOtherPetSelection={setOtherPetSelection} 
+                        otherPetSelection={otherPetSelection} 
+                        setDog={setDog}
+                        dogSelection={dogSelection}
+                        setBG={setBG} 
+                        BGSelection={BGSelection} 
+                        setCartItems={setCartItems} 
+                        cartItems={cartItems}
+                        modalOpen={modalOpen}
+                        open={open}
+                        close={close}
+                    />}
+                
+                />
             </Routes>
 
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
@@ -78,6 +98,7 @@ function App() {
                     setCheckoutModalOpen={setCheckoutModalOpen}
                     checkoutModalOpen={checkoutModalOpen}
                     setTotal={setTotal}
+                    otherPetSelection={otherPetSelection}
                 />}
             </AnimatePresence>
 

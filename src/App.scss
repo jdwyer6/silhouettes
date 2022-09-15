@@ -432,3 +432,21 @@
 .gs-button:hover{
     color: $color-yellow;
 }
+
+.float-on-hover{
+    transition: all .5s;
+}
+.float-on-hover:hover{
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, .2);
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.bgChange-on-hover{
+    transition: all .5s;
+}
+
+.bgChange-on-hover:hover{
+    opacity: .8;
+    cursor: pointer;
+}
