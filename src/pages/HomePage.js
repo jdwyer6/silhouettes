@@ -8,20 +8,21 @@ import Cat from '../assets/images/Cat.png';
 
 const HomePage = () => {
     return ( 
-        <>
-            <Container className='d-flex p-0 align-items-center mx-auto'>
+        <Container>
+
+            <Container className='p-0 align-items-center mx-auto'>
                 <Row className='mx-auto hero-img-container float-on-hover'>
 
                     {/* <img src={heroImg} alt="heroImg" className='px-0 hero-img-container__img'/> */}
                     <Col className='px-0 hero-img-container__img'></Col> 
-                    <Col className="align-items-center hero-img-container__text hidden-on-small">
+                    <Col className="align-items-center hero-img-container__text hidden-on-medium">
                         <h2>Custom canvas art at the click of a button</h2>
                         <p>The perfect gift for any animal-lover</p>
                         <Link to='/create'><Button color='dark'>Get Started</Button></Link>
                     </Col>
                 </Row>
             </Container>
-            <Container className='text-center mt-3 visible-on-small'>
+            <Container className='text-center mt-3 visible-on-medium'>
                 <Row >
                     <h2>Custom canvas art</h2>
                     <p>The perfect gift for any animal-lover</p>
@@ -34,17 +35,17 @@ const HomePage = () => {
                 <Row>
                     <Col className='me-3 mt-5 p-0 position-relative get-started float-on-hover' style={{borderRadius: '20px', overflow: 'hidden'}}>
                         <img src={Dog} width='100%'/>
-                        <h2 className='position-absolute text-white gs-text'>Dogs</h2>
+                        <h2 className='gs-text'>Dogs</h2>
                         <Link to='/create'>
-                            <Button className='position-absolute gs-button'>Let's Go!</Button>
+                            <Button className='position-absolute gs-button hidden-on-small'>Let's Go!</Button>
                         </Link>
                         
                     </Col>
                     <Col className='ms-3 p-0 mt-5 position-relative get-started float-on-hover' style={{borderRadius: '20px', overflow: 'hidden'}}>
                         <img src={Cat} width='100%' />
-                        <h2 className='position-absolute text-white gs-text'>Other Pets</h2>
+                        <h2 className='gs-text'>Other Pets</h2>
                         <Link to='/OtherPets'>
-                            <Button className='position-absolute gs-button'>Let's Go!</Button>
+                            <Button className='position-absolute gs-button hidden-on-small'>Let's Go!</Button>
                         </Link>
 
                     </Col>
@@ -55,7 +56,7 @@ const HomePage = () => {
                     <Carousel />
                 </Row>
             </Container>
-        </>
+        </Container>
 
      );
 }
