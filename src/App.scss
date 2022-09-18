@@ -13,6 +13,14 @@
   box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    position: relative
+}
+
 .form-select{
     &:focus{
     outline: solid $color-gray-light;

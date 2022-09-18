@@ -11,10 +11,9 @@ const HomePage = () => {
         <Container>
 
             <Container className='p-0 align-items-center mx-auto'>
-                <Row className='mx-auto hero-img-container float-on-hover'>
-
-                    {/* <img src={heroImg} alt="heroImg" className='px-0 hero-img-container__img'/> */}
+                <Row className='mx-auto hero-img-container'>
                     <Col className='px-0 hero-img-container__img'></Col> 
+                    
                     <Col className="align-items-center hero-img-container__text hidden-on-medium">
                         <h2>Custom canvas art at the click of a button</h2>
                         <p>The perfect gift for any animal-lover</p>
@@ -34,17 +33,21 @@ const HomePage = () => {
             <Container>
                 <Row>
                     <Col className='me-3 mt-5 p-0 position-relative get-started float-on-hover' style={{borderRadius: '20px', overflow: 'hidden'}}>
-                        <img src={Dog} width='100%'/>
+                        <Link to='create'>
+                            <img src={Dog} width='100%'/>
+                        </Link>
                         <h2 className='gs-text'>Dogs</h2>
-                        <Link to='/create'>
+                        <Link to='create'>
                             <Button className='position-absolute gs-button hidden-on-small'>Let's Go!</Button>
                         </Link>
                         
                     </Col>
                     <Col className='ms-3 p-0 mt-5 position-relative get-started float-on-hover' style={{borderRadius: '20px', overflow: 'hidden'}}>
-                        <img src={Cat} width='100%' />
+                        <Link to='OtherPets'>
+                            <img src={Cat} width='100%' />
+                        </Link>
                         <h2 className='gs-text'>Other Pets</h2>
-                        <Link to='/OtherPets'>
+                        <Link to='OtherPets'>
                             <Button className='position-absolute gs-button hidden-on-small'>Let's Go!</Button>
                         </Link>
 
