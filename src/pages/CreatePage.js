@@ -105,15 +105,15 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
                             <h3>Select a human</h3>
                         </div>
                         {/* Choose Human */}
-                        <FilterSelection label='Gender' subject='gender' setFilter={setGender} images={HUMANIMAGELAYERS}/>
-                        <FilterSelection label='Age' subject='age' setFilter={setAge} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Filter by gender' subject='gender' setFilter={setGender} images={HUMANIMAGELAYERS}/>
+                        <FilterSelection label='Filter by age' subject='age' setFilter={setAge} images={HUMANIMAGELAYERS}/>
                         <Thumbnails thumbnails={HUMANIMAGELAYERS} handleClick={handleClick} classIdentifier='human-thumbnail' gender={gender} age={age}/>
                     </Col>
 
                     <Col className='mx-lg-5 my-5 create-section_select-dog'>
                         <h3>Select a pup</h3>
                         {/* Choose Dog */}
-                        <FilterSelection label='Dog Breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
+                        <FilterSelection label='Filter by dog breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
                         <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
                         <Button className='my-3 button__bgPrimary' onClick={handleCartClick}>Add to cart</Button>
                     </Col>
