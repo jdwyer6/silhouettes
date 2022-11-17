@@ -1,20 +1,18 @@
-import { Navbar, NavItem } from 'reactstrap';
+import { Navbar, NavItem, Container } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.css';
 import { FaShoppingCart } from "react-icons/fa";
-// import { motion, AnimatePresence } from 'framer-motion';
-// import { useState } from 'react';
-// import Modal_Cart from './modal/modal_cart';
-// import Modal_Checkout from './modal/modal_checkout';
+import {AiOutlineMenu, AiOutlineHome} from 'react-icons/ai';
 
 
-const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartItems, total, setTotal, modalOpen, open, close}) => {
+const Header = ({cartItems, modalOpen, open, close}) => {
 
     return ( 
-        <>
+        <Container style={{borderBottom: '1px solid gray'}}>
             <Navbar className='d-flex justify-content-between align-content-center header-nav'>
                 <NavLink className='navLink' to='/'>
-                    <i className='fa fa-home fa-lg' />
+                    {/* <AiOutlineMenu style={{transform: 'scale(1.5)'}}/> */}
+                    <AiOutlineHome style={{transform: 'scale(1.6)'}}/>
                 </NavLink>
 
                 <NavLink to='/' className="mx-auto navLink">
@@ -22,7 +20,7 @@ const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartIt
                 </NavLink>
 
                 <div className="shopping-cart navLink">
-                    <FaShoppingCart onClick={() => (modalOpen ? close() : open())} className='shopping-cart__icon'/>
+                    <FaShoppingCart style={{transform: 'scale(1.5)'}} onClick={() => (modalOpen ? close() : open())} className='shopping-cart__icon'/>
                     {cartItems.length > 0 ? (
                         <div className="shopping-cart__notification">
                             <p>{cartItems.length}</p>
@@ -35,7 +33,7 @@ const Header = ({humanSelection, dogSelection, BGSelection, cartItems, setCartIt
             </Navbar>
         
 
-        </>
+        </Container>
         
      );
 }

@@ -7,6 +7,15 @@
   $color-white: #FFFFFF;
   $color-notification: #fa3e3e;
 
+  //Updated Color Palette
+  $white: #fbf9f9;
+  $deep-red: #2c0615;
+  $orange: #eb8424;
+  $orange-hover: #ec7c13;
+  $gray: #F2EDE9;
+
+  $left-right-margin: 10rem;
+
 
 *{
   font-family: proxima-nova, sans-serif;
@@ -15,11 +24,105 @@
 
 html, body {
     overflow-x: hidden;
+    
 }
 
 body {
-    position: relative
+    position: relative;
+    background-color: white;
 }
+
+h1{
+    font-weight: 700;
+    font-size: clamp(40px, 4.3vw, 66px);
+    line-height: clamp(2.5rem, 4vw, 4rem);
+}
+
+h2{
+    font-weight: 700;
+    font-size: 48px;
+}
+
+h3{
+    font-weight: 700;
+    font-size: 24px;
+}
+
+h4{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+p{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+img{
+    border-radius: 12px;
+}
+
+.btn-primary{
+    background-color: $orange;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 20px 80px;
+    font-weight: 700;
+    transition: all 400ms ease;
+
+    &:hover{
+        background-color: $orange-hover;
+        transform: translate(-1px, -1px);
+        box-shadow: 4px 4px 8px rgba(1, 1, 1, .2);
+    }
+}
+
+.border-top-bottom{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.padding-top-bottom{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.my-large{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.feature-section{
+    background-color: $gray;
+    padding: clamp(.5rem, 3vw, 3rem);
+    border-radius: 12px;
+}
+
+.adj-height{
+    height: clamp(50vh, 40vw, 700px);
+}
+
+@media (max-width: 768px){
+    .border-top-bottom{
+        border: none;
+    }
+
+
+}
+
+@media (max-width: 576px){
+
+    .feature-section{
+        border-radius: 0px;
+    }
+
+}
+
+
+
+
+
 
 .form-select{
     &:focus{
@@ -38,14 +141,13 @@ body {
 }
 
 .header-nav{
-    background-color: $color-white;
-    height: 2.5rem;
-    box-shadow: 0px 0px 30px $color-gray-light;
-    width: 100%;
-    box-sizing: border-box;
+    height: 5rem;
+    background-color: transparent;
 
         &__siteTitle{
-          font-size: max(1rem, 2rem);
+          font-size: clamp(18px, 2vw, 24px);
+          font-weight: 700;
+          letter-spacing: clamp(.2rem, .7vw, .5rem);
           width: clamp(15rem, 30vw, 40rem);
           text-align: center;
         }
@@ -165,7 +267,7 @@ body {
     cursor: pointer;
 
     &:hover{
-        background-color: $color-yellow;
+        background-color: $orange;
     }
 
     &__image{
@@ -188,10 +290,10 @@ body {
 
 
 .selected{
-    border: 3px solid $color-yellow;
+    border: 3px solid $orange;
 
     &:hover{
-        border: 3px solid $color-yellow;
+        border: 3px solid $orange;
     }
 }
 
@@ -212,7 +314,7 @@ body {
     }
 
     &__bgPrimary{
-        background-color: $color-yellow;
+        background-color: $orange;
         color: $color-gray-dark;
         border: 1px solid transparent;
 
@@ -286,8 +388,6 @@ body {
 
 .cart-item-container{
     width: 100%;
-    // border-top: 1px solid $color-gray-light;
-    // border-bottom: 1px solid $color-gray-light;
     padding: 15px;
     margin: auto;
 
@@ -333,12 +433,6 @@ body {
     width: 15px;
     height: 10px;
 
-    &__icon{
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
     &__notification{
         background-color: $color-notification;
         color: white;
@@ -347,12 +441,10 @@ body {
         font-size: 12px;
         height: 15px;
         width: 15px;
-        // text-align: center;
         top: -8px;
         left: 8px;
         display: flex;
         justify-content: center;
-        // align-items: center;
     }
 }
 
@@ -416,7 +508,7 @@ body {
 }
 
 .gs-button:hover{
-    color: $color-yellow;
+    color: $orange;
 }
 
 @media screen and (max-width: 600px){

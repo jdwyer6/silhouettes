@@ -53,7 +53,6 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
 
     const handleCartClick = () => { 
         setCartItems(current => [...current, {humanSelection: {humanSelection}, dogSelection:{dogSelection}, BGSelection:{BGSelection}, price:29.99}])
-        // toast.success("Item added to cart", {position: toast.POSITION.TOP_CENTER});
         modalOpen ? close() : open()
     }
 
@@ -115,7 +114,7 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
                         {/* Choose Dog */}
                         <FilterSelection label='Filter by dog breed' subject='breed' setFilter={setBreed} images={DOGIMAGELAYERS}/>
                         <Thumbnails_Dog thumbnails={DOGIMAGELAYERS} handleClick={handleClick} breed={breed} setBreed={setBreed} classIdentifier='dog-thumbnail'/>
-                        <Button className='my-3 button__bgPrimary' onClick={handleCartClick}>Add to cart</Button>
+                        <button className='btn-primary my-3' onClick={handleCartClick}>Add to cart</button>
                     </Col>
 
                 </Col>
@@ -123,7 +122,7 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
             </Row>
 
 
-            <Row className='d-flex justify-content-center create-section'>
+            {/* <Row className='d-flex justify-content-center create-section'>
             </Row>
 
 
@@ -133,7 +132,7 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
 
 
 
-            </Row>
+            </Row> */}
 
         </Container>
 
