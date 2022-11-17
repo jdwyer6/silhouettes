@@ -1,4 +1,4 @@
-import { Container, Col, Row, Button } from 'reactstrap';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 import { HUMANIMAGELAYERS } from '../shared/HUMANIMAGELAYERS';
 import { DOGIMAGELAYERS } from '../shared/DOGIMAGELAYERS';
 import { BACKGROUNDIMAGES } from '../shared/BACKGROUNDIMAGES';
