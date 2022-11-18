@@ -4,6 +4,8 @@ import { Button, Row } from 'reactstrap';
 import { FaCheckCircle } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 const dropIn = {
     hidden: {
@@ -26,11 +28,12 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, openCreditCardModal, creditCardInfo, addressInfo}) => {
+const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, addressInfo}) => {
+    
+    const paypal = useRef()
 
-
-    function addCreditCard(){
-        openCreditCardModal();
+    function addPayment(){
+        // openPaypalModal();
         handleClose();
 
     }
@@ -45,6 +48,32 @@ const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, 
         toast.success("Thank you for your order", {position: toast.POSITION.TOP_CENTER});
         handleClose();
     }
+
+    useEffect(()=>{
+        window.paypal.Buttons({
+            createOrder: (data, actions, err) => {
+                return actions.order.create({
+                    intent: "CAPTURE",
+                    purchase_units: [
+                        {
+                            description: "Awesome portrait",
+                            amount: {
+                                currency_code: "USD",
+                                value: JSON.parse(total)
+                            }
+                        }
+                    ]
+                })
+            },
+            onApprove: async (data, actions) => {
+                const order = await actions.order.capture();
+                console.log(order)
+            },
+            onError: (err) => {
+                console.log(err)
+            }
+        }).render(paypal.current)
+    }, [])
 
     return ( 
         <Backdrop onClick={handleClose}>
@@ -63,11 +92,6 @@ const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, 
                 </Row>
 
                 <p className='fw-bold'>Total: ${(total)}</p>
-                {Object.keys(creditCardInfo).length === 0 ? (
-                    <Button onClick={addCreditCard} className='button__bgTransparent w-30 my-1'>Add Credit Card</Button>
-                ) : (
-                <p><FaCheckCircle style={{color:'green'}}/> Credit Card Added </p>
-                )}
 
                 {Object.keys(addressInfo).length === 0 ? (
                     <Button onClick={addShippingAddress} className='button__bgTransparent my-1'>Add Shipping Address</Button>
@@ -75,7 +99,8 @@ const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, 
                     <p><FaCheckCircle style={{color:'green'}}/> Shipping Address Added </p>
                 )}
                 
-                <Button onClick={handleSubmitOrder} className='button__bgGray w-50 my-1'>Place Order</Button>
+                <Button onClick={addPayment} className='button__bgGray w-50 my-1'>Place Order with Paypal</Button>
+                <div ref={paypal}></div>
             </motion.div>
         </Backdrop>
      );

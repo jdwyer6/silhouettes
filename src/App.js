@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import CreatePage from './pages/CreatePage';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Modal_Cart from './components/modal/modal_cart';
+import Modal_Cart from './components/modal/Modal_Cart';
 import Modal_Checkout from './components/modal/modal_checkout';
 import CreditCardModal from './components/modal/modal_creditCard';
 import AddressModal from './components/modal/modal_address';
@@ -27,13 +27,13 @@ function App() {
     const [addressInfo, setAddressInfo] = useState({});
 
     const [modalOpen, setModalOpen] = useState(false);
-    const [checkoutModalOpen, setCheckoutModalOpen] = useState(false)
     const [creditCardModalOpen, setCreditCardModalOpen] = useState(false)
     const [addressModalOpen, setAddressModalOpen] = useState(false)
 
     const close = () => setModalOpen(false);
     const open = () => setModalOpen(true);
 
+    const [checkoutModalOpen, setCheckoutModalOpen] = useState(false)
     const closeCheckoutModal = () => setCheckoutModalOpen(false);
     const openCheckoutModal = () => setCheckoutModalOpen(true);
 
@@ -63,9 +63,11 @@ function App() {
                     modalOpen={modalOpen}
                     open={open}
                     close={close}
+                    setTotal={setTotal}
+                    total={total}
                     />}
                 />
-                <Route path='OtherPets' element={<OtherPets 
+                {/* <Route path='OtherPets' element={<OtherPets 
                         setHuman={setHuman} 
                         humanSelection={humanSelection} 
                         setOtherPetSelection={setOtherPetSelection} 
@@ -81,9 +83,9 @@ function App() {
                         close={close}
                     />}
                 
-                />
+                /> */}
             </Routes>
-
+{/* 
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
                 {modalOpen && <Modal_Cart 
                     modalOpen={modalOpen} 
@@ -100,9 +102,9 @@ function App() {
                     setTotal={setTotal}
                     otherPetSelection={otherPetSelection}
                 />}
-            </AnimatePresence>
+            </AnimatePresence> */}
 
-            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+            {/* <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
                 {checkoutModalOpen && <Modal_Checkout 
                     checkoutModalOpen={checkoutModalOpen} 
                     handleClose={closeCheckoutModal} 
@@ -115,11 +117,11 @@ function App() {
                     openAddressModal={openAddressModal}
                     addressInfo = {addressInfo}
                     />}
-            </AnimatePresence>
+            </AnimatePresence> */}
 
-            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+            {/* <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
                 {creditCardModalOpen && <CreditCardModal setCreditCardInfo={setCreditCardInfo} creditCardInfo={creditCardInfo} closeCreditCardModal={closeCreditCardModal} openCheckoutModal={openCheckoutModal}/>}
-            </AnimatePresence>
+            </AnimatePresence> */}
 
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
                 {addressModalOpen && <AddressModal setAddressInfo={setAddressInfo} addressInfo={addressInfo} closeAddressModal={closeAddressModal} openCheckoutModal={openCheckoutModal}/>}

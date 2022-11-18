@@ -15,14 +15,25 @@ import Details from '../sections/Details';
 import FAQ from '../sections/FAQ';
 import Reviews from '../sections/Reviews';
 import ShippingInfo from '../sections/ShippingInfo';
+import Modal_Cart from '../components/modal/Modal_Cart';
+import Modal_Checkout from '../components/modal/modal_checkout';
+// import cartModal from '../components/modal/modal_cart';
 
 
 
-const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems, modalOpen, open, close}) => {
+const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems, total, setTotal}) => {
     const [gender, setGender] = useState("All");
     const [age, setAge] = useState("All");
     const [breed, setBreed] = useState("All");
     const [bgTag, setBgTag] = useState('All');
+
+    const [checkoutModalOpen, setCheckoutModalOpen] = useState(false)
+    const closeCheckoutModal = () => setCheckoutModalOpen(false);
+    const openCheckoutModal = () => setCheckoutModalOpen(true);
+
+    const [cartModalOpen, setCartModalOpen] = useState(false);
+    const closeCartModal = () => setCartModalOpen(false);
+    const openCartModal = () => setCartModalOpen(true);
 
     const [section, setSection] = useState(0);
     const infoSections = [<Details />, <ShippingInfo />, <Reviews />, <FAQ /> ];
@@ -53,7 +64,8 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
 
     const handleCartClick = () => { 
         setCartItems(current => [...current, {humanSelection: {humanSelection}, dogSelection:{dogSelection}, BGSelection:{BGSelection}, price:29.99}])
-        modalOpen ? close() : open()
+        // modalOpen ? close() : open()
+        openCartModal();
     }
 
     return ( 
@@ -121,19 +133,34 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
 
             </Row>
 
-
-            {/* <Row className='d-flex justify-content-center create-section'>
-            </Row>
-
-
-            <Row className='d-flex justify-content-center'>
-
-
-
-
-
-            </Row> */}
-
+            
+            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+                {cartModalOpen && <Modal_Cart 
+                    cartModalOpen={cartModalOpen} 
+                    handleCloseCartModal={closeCartModal} 
+                    humanSelection={humanSelection} 
+                    dogSelection={dogSelection} 
+                    BGSelection={BGSelection} 
+                    cartItems={cartItems} 
+                    setCartItems={setCartItems} 
+                    closeCartModal={closeCartModal} 
+                    openCartModal={openCartModal} 
+                    setCartModalOpen={setCartModalOpen}
+                    setTotal={setTotal}
+                    openCheckoutModal={openCheckoutModal}
+                />}
+            </AnimatePresence>
+ 
+            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+                {checkoutModalOpen && <Modal_Checkout 
+                    checkoutModalOpen={openCheckoutModal} 
+                    handleClose={closeCheckoutModal} 
+                    cartItems={cartItems} 
+                    setCartItems={setCartItems} 
+                    total={total} 
+                    setTotal={setTotal}
+                    />}
+            </AnimatePresence>
         </Container>
 
         
