@@ -10,13 +10,13 @@ import Thumbnails_Background from '../components/Thumbnails_Background';
 import FilterSelection from '../components/FilterSelection';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Details from '../sections/Details';
 import FAQ from '../sections/FAQ';
 import Reviews from '../sections/Reviews';
 import ShippingInfo from '../sections/ShippingInfo';
-import Modal_Cart from '../components/modal/Modal_Cart';
-import Modal_checkout from '../components/modal/Modal_checkout';
+import Modal_Cart from '../components/modal/modal_cart';
+import Modal_checkout from '../components/modal/modal_checkout';
 import AddressModal from '../components/modal/modal_address';
 
 
@@ -46,10 +46,6 @@ const CreatePage = ({setHuman,
     const [checkoutModalOpen, setCheckoutModalOpen] = useState(false)
     const closeCheckoutModal = () => setCheckoutModalOpen(false);
     const openCheckoutModal = () => setCheckoutModalOpen(true);
-
-    // const [cartModalOpen, setCartModalOpen] = useState(false);
-    // const closeCartModal = () => setCartModalOpen(false);
-    // const openCartModal = () => setCartModalOpen(true);
 
     const [addressModalOpen, setAddressModalOpen] = useState(false)
     const closeAddressModal = () => setAddressModalOpen(false)

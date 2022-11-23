@@ -4,12 +4,6 @@ import HomePage from './pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
 import CreatePage from './pages/CreatePage';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Modal_Cart from './components/modal/Modal_Cart';
-import Modal_Checkout from './components/modal/Modal_checkout';
-import CreditCardModal from './components/modal/modal_creditCard';
-import AddressModal from './components/modal/modal_address';
-import OtherPets from './pages/OtherPets';
 
 function App() {
 
