@@ -16,12 +16,28 @@ import FAQ from '../sections/FAQ';
 import Reviews from '../sections/Reviews';
 import ShippingInfo from '../sections/ShippingInfo';
 import Modal_Cart from '../components/modal/Modal_Cart';
-import Modal_Checkout from '../components/modal/modal_checkout';
-// import cartModal from '../components/modal/modal_cart';
+import Modal_checkout from '../components/modal/Modal_checkout';
+import AddressModal from '../components/modal/modal_address';
 
 
 
-const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSelection, setCartItems, cartItems, total, setTotal}) => {
+const CreatePage = ({setHuman, 
+    humanSelection, 
+    setDog, 
+    dogSelection, 
+    setBG, 
+    BGSelection, 
+    setCartItems, 
+    cartItems, 
+    total, 
+    setTotal, 
+    addressInfo, 
+    setAddressInfo,
+    openCartModal,
+    closeCartModal,
+    setCartModalOpen,
+    cartModalOpen
+}) => {
     const [gender, setGender] = useState("All");
     const [age, setAge] = useState("All");
     const [breed, setBreed] = useState("All");
@@ -31,9 +47,13 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
     const closeCheckoutModal = () => setCheckoutModalOpen(false);
     const openCheckoutModal = () => setCheckoutModalOpen(true);
 
-    const [cartModalOpen, setCartModalOpen] = useState(false);
-    const closeCartModal = () => setCartModalOpen(false);
-    const openCartModal = () => setCartModalOpen(true);
+    // const [cartModalOpen, setCartModalOpen] = useState(false);
+    // const closeCartModal = () => setCartModalOpen(false);
+    // const openCartModal = () => setCartModalOpen(true);
+
+    const [addressModalOpen, setAddressModalOpen] = useState(false)
+    const closeAddressModal = () => setAddressModalOpen(false)
+    const openAddressModal = () => setAddressModalOpen(true)
 
     const [section, setSection] = useState(0);
     const infoSections = [<Details />, <ShippingInfo />, <Reviews />, <FAQ /> ];
@@ -147,19 +167,31 @@ const CreatePage = ({setHuman, humanSelection, setDog, dogSelection, setBG, BGSe
                     openCartModal={openCartModal} 
                     setCartModalOpen={setCartModalOpen}
                     setTotal={setTotal}
+                    total={total}
                     openCheckoutModal={openCheckoutModal}
                 />}
             </AnimatePresence>
  
             <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
-                {checkoutModalOpen && <Modal_Checkout 
+                {checkoutModalOpen && <Modal_checkout 
                     checkoutModalOpen={openCheckoutModal} 
                     handleClose={closeCheckoutModal} 
                     cartItems={cartItems} 
                     setCartItems={setCartItems} 
                     total={total} 
                     setTotal={setTotal}
+                    closeCheckoutModal={closeCheckoutModal}
+                    openAddressModal={openAddressModal}
                     />}
+            </AnimatePresence>
+
+            <AnimatePresence initial={false} exitBeforeEnter={true} onExitComplete={() => null}>
+                {addressModalOpen && <AddressModal 
+                    setAddressInfo={setAddressInfo} 
+                    addressInfo={addressInfo} 
+                    closeAddressModal={closeAddressModal} 
+                    openCheckoutModal={openCheckoutModal}
+                />}
             </AnimatePresence>
         </Container>
 

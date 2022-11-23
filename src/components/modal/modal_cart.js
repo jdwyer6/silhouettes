@@ -32,13 +32,12 @@ const Modal_Cart = ({ closeCartModal, cartItems, setCartItems, openCheckoutModal
     let shipping = 0;
     let tax = 0; 
     let itemIndex = 0;
+    let tempTotal = 0;
 
     useEffect(() => {
-        // TOTAL COMING UP AS UNDEFINED BECAUSE IT IS BEING CALCULATED IN THE BODY AND NOTE HERE IN THE JS/USE EFFECT HOOK WHEN COMPONENT MOUNTS. 
-        // SET EVERYTHING HERE FIRST THEN REPLACE CALCULATIONS BELOE IN THE JSX WITH THE VARIABLE NAMES
-        setTotal((subTotal + tax + shipping).toFixed(2))
         console.log(total)
-    }, [])
+        setTotal(tempTotal)
+    }, [tempTotal])
     
 
 
@@ -49,8 +48,6 @@ const Modal_Cart = ({ closeCartModal, cartItems, setCartItems, openCheckoutModal
         // setTotal((subTotal + tax + shipping).toFixed(2))
   
     }
-
-    console.log(total)
 
     return ( 
         <Backdrop onClick={closeCartModal}>
@@ -92,13 +89,12 @@ const Modal_Cart = ({ closeCartModal, cartItems, setCartItems, openCheckoutModal
                 <p className='my-0'>Shipping: ${shipping.toFixed(2)}</p>
                 <p className='my-0'>Tax: ${tax.toFixed(2)}</p>
                 <p className='fw-bold'>Total: ${(subTotal + tax + shipping).toFixed(2)}</p>
+                {tempTotal = (subTotal + tax + shipping).toFixed(2)}
                 <Button onClick={closeCartModal} className='button__bgTransparent my-1'>Continue Shopping</Button>
-                <Button onClick={handleOpenCheckout} className='button__bgGray w-50 my-1'>Check Out</Button>
+                <Button onClick={openCheckoutModal} className='button__bgGray w-50 my-1'>Check Out</Button>
             </motion.div>
         </Backdrop>
      );
 }
  
 export default Modal_Cart;
-
-// onClick={() => (checkoutModalOpen ? {closeCheckoutModal} : {openCheckoutModal})}
