@@ -103,6 +103,10 @@ img{
     height: clamp(50vh, 40vw, 700px);
 }
 
+#braintree-paypal-loggedout:nth-child(n+2) {
+    display: none;
+    }
+
 @media (max-width: 768px){
     .border-top-bottom{
         border: none;
@@ -118,8 +122,6 @@ img{
     }
 
 }
-
-
 
 
 

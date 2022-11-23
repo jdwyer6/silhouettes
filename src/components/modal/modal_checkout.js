@@ -4,6 +4,8 @@ import { Button, Row } from 'reactstrap';
 import { FaCheckCircle } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const dropIn = {
     hidden: {
@@ -26,28 +28,50 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, openCreditCardModal, creditCardInfo, addressInfo}) => {
-
-
-    function addCreditCard(){
-        openCreditCardModal();
-        handleClose();
-
-    }
-
-    function addShippingAddress(){
-        openAddressModal()
-        handleClose();
-    }
+const Modal_checkout = ({ closeCheckoutModal, cartItems, setCartItems, total, openAddressModal, addressInfo}) => {
+    
+    const paypal = useRef()
+    const [paypalRendered, setPaypalRendered] = useState(false);
 
     function handleSubmitOrder(){
         setCartItems([])
         toast.success("Thank you for your order", {position: toast.POSITION.TOP_CENTER});
-        handleClose();
+        closeCheckoutModal();
     }
 
+    useEffect(()=>{
+
+        window.paypal.Buttons({
+            createOrder: (data, actions, err) => {
+                return actions.order.create({
+                    intent: "CAPTURE",
+                    purchase_units: [
+                        {
+                            description: "Awesome portrait",
+                            amount: {
+                                currency_code: "USD",
+                                value: JSON.parse(total)
+                            }
+                        }
+                    ]
+                })
+            },
+            onApprove: async (data, actions) => {
+                const order = await actions.order.capture();
+                console.log(order)
+            },
+            onError: (err) => {
+                console.log(err)
+            }
+        }).render(paypal.current)
+        console.log('render')
+        
+
+    }, [])
+
     return ( 
-        <Backdrop onClick={handleClose}>
+
+        <Backdrop onClick={closeCheckoutModal}>
             <motion.div
                 onClick={(e) => e.stopPropagation()}
                 className="modal"    
@@ -63,22 +87,13 @@ const Modal = ({ handleClose, cartItems, setCartItems, total, openAddressModal, 
                 </Row>
 
                 <p className='fw-bold'>Total: ${(total)}</p>
-                {Object.keys(creditCardInfo).length === 0 ? (
-                    <Button onClick={addCreditCard} className='button__bgTransparent w-30 my-1'>Add Credit Card</Button>
-                ) : (
-                <p><FaCheckCircle style={{color:'green'}}/> Credit Card Added </p>
-                )}
+                 <div ref={paypal}></div>
+   
 
-                {Object.keys(addressInfo).length === 0 ? (
-                    <Button onClick={addShippingAddress} className='button__bgTransparent my-1'>Add Shipping Address</Button>
-                ) : (
-                    <p><FaCheckCircle style={{color:'green'}}/> Shipping Address Added </p>
-                )}
                 
-                <Button onClick={handleSubmitOrder} className='button__bgGray w-50 my-1'>Place Order</Button>
             </motion.div>
         </Backdrop>
      );
 }
  
-export default Modal;
+export default Modal_checkout;

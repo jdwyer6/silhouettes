@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import Backdrop from './backdrop';
 import { Button, Row } from 'reactstrap';
 import CartItem from './cartItem';
+import { useEffect } from 'react';
 
 const dropIn = {
     hidden: {
@@ -24,24 +25,32 @@ const dropIn = {
     }
 }
 
-const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, checkoutModalOpen, setTotal, otherPetSelection}) => {
+const Modal_Cart = ({ closeCartModal, cartItems, setCartItems, openCheckoutModal, setTotal, total, otherPetSelection}) => {
 
     let price;
     let subTotal = 0;
     let shipping = 0;
     let tax = 0; 
     let itemIndex = 0;
+    let tempTotal = 0;
+
+    useEffect(() => {
+        console.log(total)
+        setTotal(tempTotal)
+    }, [tempTotal])
+    
 
 
     function handleOpenCheckout(){
-        handleClose()
-        setCheckoutModalOpen(true);
-        setTotal((subTotal + tax + shipping).toFixed(2))
-        console.log(checkoutModalOpen)
+        openCheckoutModal();
+        closeCartModal()
+        // setCheckoutModalOpen(true);
+        // setTotal((subTotal + tax + shipping).toFixed(2))
+  
     }
 
     return ( 
-        <Backdrop onClick={handleClose}>
+        <Backdrop onClick={closeCartModal}>
             <motion.div
                 onClick={(e) => e.stopPropagation()}
                 className="modal"    
@@ -60,7 +69,17 @@ const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, che
                         shipping += item.price * .08
                         tax += item.price * .0925
                         itemIndex = index
-                        return <CartItem key={index} itemIndex={itemIndex} humanSelection={item.humanSelection} dogSelection={item.dogSelection} BGSelection={item.BGSelection} price={price} cartItems={cartItems} setCartItems={setCartItems} otherPetSelection={otherPetSelection}/>
+                        return <CartItem 
+                        key={index} 
+                        itemIndex={itemIndex} 
+                        humanSelection={item.humanSelection} 
+                        dogSelection={item.dogSelection} 
+                        BGSelection={item.BGSelection} 
+                        price={price} 
+                        cartItems={cartItems} 
+                        setCartItems={setCartItems} 
+                        otherPetSelection={otherPetSelection}
+                        />
                     })}
                          
                         
@@ -70,13 +89,12 @@ const Modal = ({ handleClose, cartItems, setCartItems, setCheckoutModalOpen, che
                 <p className='my-0'>Shipping: ${shipping.toFixed(2)}</p>
                 <p className='my-0'>Tax: ${tax.toFixed(2)}</p>
                 <p className='fw-bold'>Total: ${(subTotal + tax + shipping).toFixed(2)}</p>
-                <Button onClick={handleClose} className='button__bgTransparent my-1'>Continue Shopping</Button>
-                <Button onClick={handleOpenCheckout} className='button__bgGray w-50 my-1'>Check Out</Button>
+                {tempTotal = (subTotal + tax + shipping).toFixed(2)}
+                <Button onClick={closeCartModal} className='button__bgTransparent my-1'>Continue Shopping</Button>
+                <Button onClick={openCheckoutModal} className='button__bgGray w-50 my-1'>Check Out</Button>
             </motion.div>
         </Backdrop>
      );
 }
  
-export default Modal;
-
-// onClick={() => (checkoutModalOpen ? {closeCheckoutModal} : {openCheckoutModal})}
+export default Modal_Cart;
